@@ -39,12 +39,12 @@ Back-End et valorisation des données).
 ## Site (Mission 2 – Refonte Front-End)
 Copie statique du site https://www.asso-sfc.org, reprise dans un cadre scolaire.
 
-- `index.html` et `*.html` : pages du site (renommées depuis `.php`)
-- `css/style.css` : feuille de style d'origine (à découper en plusieurs fichiers)
-- `images/`, `js/`, `photos/` : ressources
+- `src/` : tout le site. `src/index.html` et `src/*.html` : pages du site (renommées depuis `.php`)
+- `src/css/style.css` : feuille de style d'origine (à découper en plusieurs fichiers)
+- `src/images/`, `src/js/`, `src/photos/` : ressources
 - `documents/` (PDF) : non versionné
 
-Ouvrir `index.html` dans le navigateur pour voir le site.
+Ouvrir `src/index.html` dans le navigateur pour voir le site.
 
 ## Workflow Git
 - `main` est protégée : on ne pousse pas dessus directement.
