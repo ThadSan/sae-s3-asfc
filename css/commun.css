@@ -1,0 +1,136 @@
+/* ==========================================================
+   commun.css – Styles communs du site ASFC (refonte SAÉ S3)
+   Seule la personne 1 modifie ce fichier.
+   ========================================================== */
+
+/* ---------- 1. Variables (maquette Figma) ---------- */
+:root {
+  /* Couleurs */
+  --marine: #1F3347;
+  --marine-fonce: #162434;
+  --orange: #F28B50;
+  --primaire: #0F5C6E;
+  --menthe: #E4F5EE;
+  --peche: #FFF1E8;
+  --bleu-clair: #E3ECF7;
+  --fond: #FFFFFF;
+  --fond-doux: #F6F9FA;
+  --texte: #1B2A33;
+  --texte-secondaire: #43535D;
+  --bordure: #D5DEE3;
+  --sur-sombre: #FFFFFF;
+  --sur-sombre-secondaire: #CBD7E3;
+
+  /* Espacements */
+  --espace-xs: 8px;
+  --espace-s: 16px;
+  --espace-m: 24px;
+  --espace-l: 40px;
+  --espace-xl: 64px;
+  --espace-xxl: 96px;
+
+  /* Police : Inter avec police de secours */
+  --police: "Inter", sans-serif;
+
+  /* Tailles de titres : mobile d'abord, agrandies sur ordinateur */
+  --taille-h1: 32px;
+  --taille-h2: 26px;
+  --taille-h3: 22px;
+
+  /* Divers */
+  --rayon: 8px;
+}
+
+/* ---------- 2. Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--police);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--texte);
+  background: var(--fond);
+}
+
+/* Images responsives */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---------- 3. Titres (mobile-first) ---------- */
+h1 { font-size: var(--taille-h1); line-height: 1.2; }
+h2 { font-size: var(--taille-h2); line-height: 1.25; }
+h3 { font-size: var(--taille-h3); line-height: 1.3; }
+
+@media (min-width: 768px) {
+  :root {
+    --taille-h1: 52px;
+    --taille-h2: 36px;
+  }
+}
+
+/* ---------- 4. Conteneur centré ---------- */
+.container {
+  width: 100%;
+  max-width: 1248px;
+  margin-inline: auto;
+  padding-inline: var(--espace-m);   /* 24px sur mobile */
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: var(--espace-xxl); /* 96px sur ordinateur */
+  }
+}
+
+/* ---------- 5. Boutons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 12px 20px;
+  border: 2px solid transparent;
+  border-radius: var(--rayon);
+  font-family: var(--police);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-accent {
+  background: var(--orange);
+  color: var(--marine);
+}
+
+.btn-contour-clair {
+  background: transparent;
+  border-color: var(--sur-sombre);
+  color: var(--sur-sombre);
+}
+
+.btn-primaire {
+  background: var(--primaire);
+  color: var(--sur-sombre);
+}
+
+.btn-secondaire {
+  background: var(--fond);
+  border-color: var(--primaire);
+  color: var(--primaire);
+}
+
+/* ---------- 6. Accessibilité : focus visible ---------- */
+:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 2px;
+}
