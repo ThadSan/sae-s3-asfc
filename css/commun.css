@@ -1,11 +1,9 @@
 /* ==========================================================
-   commun.css – Styles communs du site ASFC (refonte SAÉ S3)
-   Seule la personne 1 modifie ce fichier.
+   cc en commun fait par la personne 1 -> voir compte rendue
    ========================================================== */
 
-/* ---------- 1. Variables (maquette Figma) ---------- */
 :root {
-  /* Couleurs */
+ 
   --marine: #1F3347;
   --marine-fonce: #162434;
   --orange: #F28B50;
@@ -21,7 +19,7 @@
   --sur-sombre: #FFFFFF;
   --sur-sombre-secondaire: #CBD7E3;
 
-  /* Espacements */
+  
   --espace-xs: 8px;
   --espace-s: 16px;
   --espace-m: 24px;
@@ -29,10 +27,9 @@
   --espace-xl: 64px;
   --espace-xxl: 96px;
 
-  /* Police : Inter avec police de secours */
   --police: "Inter", sans-serif;
 
-  /* Tailles de titres : mobile d'abord, agrandies sur ordinateur */
+  /* Tailles des titres : mobile d'abord, agrandies sur ordinateur */
   --taille-h1: 32px;
   --taille-h2: 26px;
   --taille-h3: 22px;
