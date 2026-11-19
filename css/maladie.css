@@ -1,0 +1,271 @@
+/* ==========================================================
+   maladie.css – Page « Le Syndrome de Fatigue Chronique »
+   S'appuie sur les variables et classes de commun.css.
+
+   Organisation :
+   1. Variables locales (les seuls réglages qui changent selon l'écran)
+   2. Rythme et texte courant
+   3. Titres
+   4. Blocs réutilisables (.bloc + variantes)
+   5. Composants : intro, sous-menu, listes, notes, comorbidités
+   6. Utilitaires
+   7. Tablette / ordinateur (surcharge des variables uniquement)
+   ========================================================== */
+
+/* ---------- 1. Variables locales (mobile d'abord) ---------- */
+.maladie {
+    --largeur-texte: 75ch;                 /* < 80 caractères par ligne */
+    --pad-bloc: var(--espace-s);           /* intérieur des blocs */
+    --retrait: 20px;                       /* retrait des listes et citations */
+    --rythme: var(--espace-l);             /* espace entre deux sections */
+    padding-block: var(--espace-l) var(--espace-xl);
+}
+
+/* ---------- 2. Rythme et texte courant ---------- */
+/* Colonne de lecture centrée dans le container */
+.maladie > * {
+    max-width: var(--largeur-texte);
+    margin-inline: auto;
+}
+
+.maladie section {
+    margin-top: var(--rythme);
+}
+
+/* :where() = spécificité 0 -> les classes ci-dessous passent toujours devant */
+.maladie :where(p, ul, ol) {
+    margin-bottom: var(--espace-s);
+    overflow-wrap: break-word;             /* pas de défilement horizontal */
+}
+
+.maladie :where(ul, ol) {
+    padding-left: var(--retrait);
+}
+
+.maladie :where(li + li) {
+    margin-top: var(--espace-xs);
+}
+
+.maladie ol li::marker {
+    color: var(--primaire);
+    font-weight: 700;
+}
+
+/* Liens : toujours soulignés, sauf les boutons du CSS commun */
+.maladie a:not(.btn) {
+    color: var(--primaire);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.maladie a:not(.btn):hover {
+    color: var(--marine);
+}
+
+/* ---------- 3. Titres (h1 > h2 > h3) ---------- */
+.maladie :where(h1, h2, h3) {
+    color: var(--marine);
+    font-weight: 700;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+}
+
+.maladie h1 {
+    margin-bottom: var(--espace-s);
+}
+
+.maladie h2 {
+    margin-bottom: var(--espace-m);
+}
+
+/* Petit trait orange au-dessus des h2 (décor : jamais de texte orange) */
+.maladie h2::before {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 4px;
+    margin-bottom: var(--espace-s);
+    background: var(--orange);
+    border-radius: 2px;
+}
+
+.maladie h3 {
+    margin-block: var(--espace-l) var(--espace-s);
+    padding-left: var(--espace-s);
+    border-left: 4px solid var(--primaire);
+}
+
+/* ---------- 4. Blocs réutilisables : .bloc + une variante ---------- */
+.bloc {
+    --fond-bloc: var(--fond-doux);
+    --accent-bloc: var(--bordure);
+    padding: var(--pad-bloc);
+    background: var(--fond-bloc);
+    border-left: 4px solid var(--accent-bloc);
+    border-radius: var(--rayon);
+}
+
+.bloc-menthe { --fond-bloc: var(--menthe); --accent-bloc: var(--primaire); }
+.bloc-peche  { --fond-bloc: var(--peche);  --accent-bloc: var(--orange); }
+
+.bloc > :last-child {
+    margin-bottom: 0;
+}
+
+.maladie section > .bloc {
+    margin-block: var(--espace-l);
+}
+
+/* ---------- 5. Composants ---------- */
+
+/* Introduction : titre, sous-titre, chapeau */
+.intro {
+    margin-top: var(--espace-l);
+}
+
+.sous-titre {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--marine);
+    color: var(--sur-sombre);
+    border-radius: var(--rayon);
+    font-weight: 600;
+}
+
+.chapeau {
+    font-size: 18px;
+    color: var(--marine);
+}
+
+/* Sous-menu : boutons du CSS commun (.btn .btn-primaire / .btn-secondaire) */
+.sous-menu-titre {
+    margin-bottom: var(--espace-xs);
+    font-weight: 600;
+    color: var(--texte-secondaire);
+}
+
+.sous-menu ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espace-xs);
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.sous-menu li + li {
+    margin-top: 0;
+}
+
+/* Notes, renvois, séparateur « ou », texte indenté */
+.note {
+    font-size: 16px;
+    font-style: italic;
+    color: var(--texte-secondaire);
+}
+
+.liste-notes {
+    padding-left: 0;
+    list-style: none;
+}
+
+.liste-notes li {
+    margin-top: 0;
+}
+
+.renvoi {
+    padding-top: var(--espace-s);
+    border-top: 1px solid var(--bordure);
+}
+
+.ou {
+    margin-left: var(--retrait);
+    font-weight: 700;
+}
+
+.retrait {
+    padding-left: var(--retrait);
+    border-left: 4px solid var(--bordure);
+}
+
+.sous-liste {
+    margin-top: var(--espace-xs);
+}
+
+/* Comorbidités : cartes identiques (.bloc) ; l'une porte un sous-bloc partenaire */
+.comorbidites {
+    display: grid;
+    gap: var(--espace-s);
+    padding-left: 0;
+    list-style: none;
+}
+
+.comorbidites > li {
+    --pad-bloc: var(--espace-m);
+    --accent-bloc: var(--primaire);
+    margin-top: 0;
+}
+
+.carte-titre {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--marine);
+}
+
+.partenaire {
+    --pad-bloc: var(--espace-s);
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-s);
+}
+
+.partenaire p {
+    margin-bottom: 0;
+}
+
+.partenaire img {
+    width: 100%;
+    max-width: 212px;
+    border-radius: var(--rayon);
+}
+
+/* ---------- 6. Utilitaires ---------- */
+.texte-centre {
+    text-align: center;
+}
+
+.visuellement-cache {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+/* ---------- 7. Tablette et ordinateur (à partir de 768 px) ----------
+   On change surtout les variables : les composants s'adaptent seuls. */
+@media (min-width: 768px) {
+    .maladie {
+        --pad-bloc: var(--espace-l);
+        --retrait: var(--espace-m);
+        --rythme: var(--espace-xl);
+        padding-block: var(--espace-xl) var(--espace-xxl);
+    }
+
+    .chapeau {
+        font-size: 20px;
+    }
+
+    .partenaire {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .partenaire img {
+        width: 212px;
+        flex-shrink: 0;
+    }
+}
