@@ -53,6 +53,13 @@ body {
   line-height: 1.5;
   color: var(--texte);
   background: var(--fond);
+  min-height: 100vh;          /* la page fait au moins la hauteur de l'écran */
+  display: flex;
+  flex-direction: column;     /* header, main, footer empilés */
+}
+
+main {
+  flex: 1;                    /* le main prend toute la place restante */
 }
 
 /* Images responsives */
