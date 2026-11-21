@@ -1,27 +1,12 @@
-/* ==========================================================
-   maladie.css – Page « Le Syndrome de Fatigue Chronique »
-   S'appuie sur les variables et classes de commun.css.
-
-   Organisation :
-   1. Variables locales (les seuls réglages qui changent selon l'écran)
-   2. Rythme et texte courant
-   3. Titres
-   4. Blocs réutilisables (.bloc + variantes)
-   5. Composants : intro, sous-menu, listes, notes, comorbidités
-   6. Utilitaires
-   7. Tablette / ordinateur (surcharge des variables uniquement)
-   ========================================================== */
-
-/* ---------- 1. Variables locales (mobile d'abord) ---------- */
+/* Variables locales : seules ces valeurs changent selon la taille d'écran */
 .maladie {
-    --largeur-texte: 75ch;                 /* < 80 caractères par ligne */
-    --pad-bloc: var(--espace-s);           /* intérieur des blocs */
-    --retrait: 20px;                       /* retrait des listes et citations */
-    --rythme: var(--espace-l);             /* espace entre deux sections */
+    --largeur-texte: 75ch;
+    --pad-bloc: var(--espace-s);
+    --retrait: 20px;
+    --rythme: var(--espace-l);
     padding-block: var(--espace-l) var(--espace-xl);
 }
 
-/* ---------- 2. Rythme et texte courant ---------- */
 /* Colonne de lecture centrée dans le container */
 .maladie > * {
     max-width: var(--largeur-texte);
@@ -32,10 +17,10 @@
     margin-top: var(--rythme);
 }
 
-/* :where() = spécificité 0 -> les classes ci-dessous passent toujours devant */
+/* :where() donne une spécificité nulle : les classes plus bas passent toujours devant */
 .maladie :where(p, ul, ol) {
     margin-bottom: var(--espace-s);
-    overflow-wrap: break-word;             /* pas de défilement horizontal */
+    overflow-wrap: break-word;
 }
 
 .maladie :where(ul, ol) {
@@ -46,24 +31,6 @@
     margin-top: var(--espace-xs);
 }
 
-.maladie ol li::marker {
-    color: var(--primaire);
-    font-weight: 700;
-}
-
-/* Liens : toujours soulignés, sauf les boutons du CSS commun */
-.maladie a:not(.btn) {
-    color: var(--primaire);
-    font-weight: 600;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-}
-
-.maladie a:not(.btn):hover {
-    color: var(--marine);
-}
-
-/* ---------- 3. Titres (h1 > h2 > h3) ---------- */
 .maladie :where(h1, h2, h3) {
     color: var(--marine);
     font-weight: 700;
@@ -79,36 +46,27 @@
     margin-bottom: var(--espace-m);
 }
 
-/* Petit trait orange au-dessus des h2 (décor : jamais de texte orange) */
-.maladie h2::before {
-    content: "";
-    display: block;
-    width: 48px;
-    height: 4px;
-    margin-bottom: var(--espace-s);
-    background: var(--orange);
-    border-radius: 2px;
-}
-
 .maladie h3 {
     margin-block: var(--espace-l) var(--espace-s);
-    padding-left: var(--espace-s);
-    border-left: 4px solid var(--primaire);
 }
 
-/* ---------- 4. Blocs réutilisables : .bloc + une variante ---------- */
-.bloc {
-    --fond-bloc: var(--fond-doux);
-    --accent-bloc: var(--bordure);
-    padding: var(--pad-bloc);
-    background: var(--fond-bloc);
-    border-left: 4px solid var(--accent-bloc);
-    border-radius: var(--rayon);
+/* Liens soulignés (pas de couleur seule), sauf les boutons du CSS commun */
+.maladie a:not(.btn) {
+    color: var(--primaire);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }
 
-.bloc-menthe { --fond-bloc: var(--menthe); --accent-bloc: var(--primaire); }
-.bloc-peche  { --fond-bloc: var(--peche);  --accent-bloc: var(--orange); }
+.maladie a:not(.btn):hover {
+    color: var(--marine);
+}
 
+/* Variantes de .bloc (défini dans commun.css) : seul le fond change */
+.bloc-menthe { --fond-bloc: var(--menthe); }
+.bloc-peche  { --fond-bloc: var(--peche); }
+
+/* Pas de marge sous le dernier élément d'un bloc */
 .bloc > :last-child {
     margin-bottom: 0;
 }
@@ -117,9 +75,6 @@
     margin-block: var(--espace-l);
 }
 
-/* ---------- 5. Composants ---------- */
-
-/* Introduction : titre, sous-titre, chapeau */
 .intro {
     margin-top: var(--espace-l);
 }
@@ -138,13 +93,13 @@
     color: var(--marine);
 }
 
-/* Sous-menu : boutons du CSS commun (.btn .btn-primaire / .btn-secondaire) */
 .sous-menu-titre {
     margin-bottom: var(--espace-xs);
     font-weight: 600;
     color: var(--texte-secondaire);
 }
 
+/* Liens du sous-menu côte à côte, à la ligne si l'écran est étroit */
 .sous-menu ul {
     display: flex;
     flex-wrap: wrap;
@@ -158,27 +113,12 @@
     margin-top: 0;
 }
 
-/* Notes, renvois, séparateur « ou », texte indenté */
-.note {
-    font-size: 16px;
-    font-style: italic;
-    color: var(--texte-secondaire);
-}
-
-.liste-notes {
-    padding-left: 0;
-    list-style: none;
-}
-
-.liste-notes li {
-    margin-top: 0;
-}
-
 .renvoi {
     padding-top: var(--espace-s);
     border-top: 1px solid var(--bordure);
 }
 
+/* « ou » placé entre deux listes numérotées (1 / ou / 2) */
 .ou {
     margin-left: var(--retrait);
     font-weight: 700;
@@ -186,14 +126,14 @@
 
 .retrait {
     padding-left: var(--retrait);
-    border-left: 4px solid var(--bordure);
+    border-left: 1px solid var(--bordure);
 }
 
 .sous-liste {
     margin-top: var(--espace-xs);
 }
 
-/* Comorbidités : cartes identiques (.bloc) ; l'une porte un sous-bloc partenaire */
+/* Comorbidités : cartes identiques (.bloc), padding réduit par rapport aux autres blocs */
 .comorbidites {
     display: grid;
     gap: var(--espace-s);
@@ -203,7 +143,6 @@
 
 .comorbidites > li {
     --pad-bloc: var(--espace-m);
-    --accent-bloc: var(--primaire);
     margin-top: 0;
 }
 
@@ -213,6 +152,7 @@
     color: var(--marine);
 }
 
+/* Sous-bloc APSSII dans la carte : logo sous le texte sur mobile, à droite sur tablette */
 .partenaire {
     --pad-bloc: var(--espace-s);
     display: flex;
@@ -230,22 +170,7 @@
     border-radius: var(--rayon);
 }
 
-/* ---------- 6. Utilitaires ---------- */
-.texte-centre {
-    text-align: center;
-}
-
-.visuellement-cache {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-}
-
-/* ---------- 7. Tablette et ordinateur (à partir de 768 px) ----------
-   On change surtout les variables : les composants s'adaptent seuls. */
+/* Tablette et ordinateur : on change surtout les variables */
 @media (min-width: 768px) {
     .maladie {
         --pad-bloc: var(--espace-l);
