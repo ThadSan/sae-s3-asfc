@@ -1,0 +1,430 @@
+/* ==========================================================
+   accueil.css – Page d'accueil de l'ASFC
+   Mobile d'abord : les règles de base valent pour 390 px,
+   les @media (min-width) ajoutent les colonnes ensuite.
+
+   Organisation :
+   1. Variables locales (couleurs de la maquette, avec repli)
+   2. Base : texte, liens, titres, focus
+   3. Structure : bandes pleine largeur + colonne centrée
+   4. Blocs : annonces, hero, entêtes de section
+   5. Cartes, actualités, ressources
+   6. À propos, soutien
+   7. Boutons propres à l'accueil
+   8. Tablette / ordinateur
+   ========================================================== */
+
+/* ---------- 1. Variables locales ---------- */
+.accueil {
+    --a-marine: var(--marine, #1f3347);
+    --a-primaire: var(--primaire, #0f5c6e);
+    --a-orange: var(--orange, #f28b50);
+    --a-menthe: var(--menthe, #e4f5ee);
+    --a-peche: var(--peche, #fff1e8);
+    --a-bleu: var(--bleu-clair, #e3ecf7);
+    --a-doux: var(--fond-doux, #f6f9fa);
+    --a-bordure: var(--bordure, #d5dee3);
+    --a-texte: var(--texte, #1b2a33);
+    --a-texte2: var(--texte-secondaire, #43535d);
+    --a-clair2: #cbd7e3;
+
+    --a-bande: 3rem;      /* espace vertical d'une section */
+    --a-marge: 1.5rem;    /* marge latérale */
+    --a-gap: 1.25rem;
+    color: var(--a-texte);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* ---------- 2. Base ---------- */
+.accueil :where(p, ul) {
+    overflow-wrap: break-word;   /* pas de défilement horizontal (audit 8) */
+}
+
+.accueil :where(ul) {
+    list-style: none;
+    padding: 0;
+}
+
+.accueil :where(h1, h2, h3) {
+    color: var(--a-marine);
+    font-weight: 700;
+    line-height: 1.2;
+    text-wrap: balance;
+}
+
+.accueil h1 { font-size: clamp(1.9rem, 5vw + 0.5rem, 3.25rem); }
+.accueil h2 { font-size: clamp(1.6rem, 3vw + 0.5rem, 2.25rem); }
+.accueil h3 { font-size: 1.25rem; line-height: 1.3; }
+
+/* Liens toujours soulignés (audit 9), contraste > 4,5:1 (audit 6) */
+.accueil a:not(.btn) {
+    color: var(--a-primaire);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.accueil a:not(.btn):hover {
+    color: var(--a-marine);
+    text-decoration-thickness: 3px;
+}
+
+/* Focus clavier bien visible (point fort de l'audit à conserver) */
+.accueil a:focus-visible {
+    outline: 3px solid var(--a-marine);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+/* ---------- 3. Structure ---------- */
+.bande,
+.hero,
+.soutien {
+    padding-block: var(--a-bande);
+}
+
+.interieur {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: var(--a-marge);
+}
+
+.bande-peche { background: var(--a-peche); }
+.bande-doux  { background: var(--a-doux); }
+
+.accueil section > .interieur > :last-child {
+    margin-bottom: 0;
+}
+
+.accueil .interieur > h2,
+.accueil .entete-section {
+    margin-bottom: 1.75rem;
+}
+
+/* ---------- 4. Annonces, hero, entêtes ---------- */
+.annonces {
+    padding-block: 1rem;
+    background: var(--a-bleu);
+}
+
+.annonces p {
+    margin-bottom: 0.5rem;
+}
+
+.annonces p:last-child {
+    margin-bottom: 0;
+}
+
+.hero {
+    background: var(--a-menthe);
+}
+
+.hero-grille {
+    display: grid;
+    gap: 2rem;
+}
+
+.hero-texte > * + * {
+    margin-top: 1.25rem;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: var(--a-orange);
+    color: var(--a-marine);
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.chapeau {
+    max-width: 62ch;                 /* < 80 caractères par ligne */
+    font-size: 1.125rem;
+    color: var(--a-texte2);
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;          /* boutons pleine largeur sur mobile */
+    gap: 0.75rem;
+}
+
+/* Raccourcis : la vraie "illustration" de la page */
+.hero-raccourcis {
+    padding: 1.5rem;
+    background: #fff;
+    border-left: 4px solid var(--a-orange);
+    border-radius: 16px;
+}
+
+.hero-raccourcis h2 {
+    margin-bottom: 1rem;
+    font-size: 1.35rem;
+}
+
+.hero-raccourcis li + li {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--a-bordure);
+}
+
+.entete-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.entete-section h2 {
+    margin: 0;
+}
+
+/* ---------- 5. Cartes, actualités, ressources ---------- */
+.grille {
+    display: grid;
+    gap: var(--a-gap);
+}
+
+.carte {
+    position: relative;               /* pour le lien étendu à toute la carte */
+    padding: 1.5rem;
+    background: #fff;
+    border: 1px solid var(--a-bordure);
+    border-radius: 16px;
+}
+
+.carte h3 { margin-bottom: 0.5rem; }
+.carte p  { color: var(--a-texte2); }
+
+.carte > :last-child {
+    margin-bottom: 0;
+}
+
+/* Le lien du titre couvre toute la carte (une seule cible, un intitulé unique) */
+.cartes-aide h3 a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+}
+
+.cartes-aide .carte:focus-within {
+    outline: 3px solid var(--a-marine);
+    outline-offset: 3px;
+}
+
+.cartes-aide h3 a:focus-visible {
+    outline: none;                    /* le contour est porté par la carte */
+}
+
+.cartes-aide .carte:hover {
+    border-color: var(--a-primaire);
+}
+
+.suite {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: var(--a-primaire);
+}
+
+/* "En bref" : cartes à filet orange, sans fond blanc ni bordure */
+.liste-bref {
+    display: grid;
+    gap: var(--a-gap);
+}
+
+.liste-bref li {
+    padding: 1.5rem;
+    background: var(--a-doux);
+    border-left: 4px solid var(--a-orange);
+    border-radius: 16px;
+}
+
+.liste-bref h3 { margin-bottom: 0.5rem; }
+.liste-bref p  { margin: 0; color: var(--a-texte2); }
+
+/* Actualités : liste éditoriale, séparée par des filets */
+.liste-actus li {
+    padding-top: 1rem;
+    border-top: 4px solid var(--a-primaire);
+}
+
+.date {
+    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--a-texte2);
+}
+
+.liste-actus h3 {
+    font-size: 1.2rem;
+}
+
+.titre-ressources {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.ressources {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 0;
+}
+
+.ressources a {
+    display: inline-block;
+    padding: 10px 16px;
+    background: #fff;
+    border: 2px solid var(--a-primaire);
+    border-radius: 999px;
+    text-decoration: none;
+}
+
+.ressources a:hover {
+    background: var(--a-menthe);
+}
+
+/* ---------- 6. À propos, soutien ---------- */
+.asfc-grille {
+    display: grid;
+    gap: 2rem;
+}
+
+.asfc-texte h2 {
+    margin-bottom: 1.25rem;
+}
+
+.asfc-texte p {
+    max-width: 62ch;
+}
+
+.missions {
+    align-self: start;
+    padding: 1.75rem;
+    background: var(--a-menthe);
+    border-radius: 16px;
+}
+
+.missions h3 { margin-bottom: 0.75rem; }
+
+.missions li {
+    position: relative;
+    padding-left: 1.25rem;
+    font-weight: 600;
+    color: var(--a-marine);
+}
+
+.missions li + li { margin-top: 0.5rem; }
+
+.missions li::before {              /* puce décorative */
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 8px;
+    height: 8px;
+    background: var(--a-orange);
+    border-radius: 50%;
+}
+
+.soutien {
+    background: var(--a-marine);
+    color: #fff;
+}
+
+.soutien h2 {
+    margin-bottom: 0.75rem;
+    color: #fff;
+}
+
+.soutien p {
+    max-width: 55ch;
+    margin: 0;
+    color: var(--a-clair2);
+}
+
+.soutien-grille {
+    display: grid;
+    gap: 1.75rem;
+}
+
+/* ---------- 7. Boutons propres à l'accueil ----------
+   les boutons du hero utilisent .btn .btn-primaire / .btn-secondaire de commun.css
+   ici on ajoute seulement les deux variantes pour fond sombre */
+.accueil .btn-don {
+    background: var(--a-orange);
+    color: var(--a-marine);
+    border: 2px solid var(--a-orange);
+}
+
+.accueil .btn-contour-clair {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+.accueil :is(.btn-don, .btn-contour-clair):focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 3px;
+}
+
+/* ---------- 8. Tablette (768 px) et ordinateur (1024 px) ---------- */
+@media (min-width: 768px) {
+    .accueil {
+        --a-bande: 4.5rem;
+        --a-marge: 2.5rem;
+    }
+
+    .actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .entete-section {
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+    }
+
+    .liste-bref,
+    .liste-actus {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cartes-aide {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .deux-colonnes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .soutien-grille {
+        grid-template-columns: 1fr auto;
+        align-items: center;
+    }
+}
+
+@media (min-width: 1024px) {
+    .accueil {
+        --a-bande: 5rem;
+        --a-marge: 3rem;
+    }
+
+    .hero-grille {
+        grid-template-columns: 1.4fr 1fr;
+        align-items: center;
+        gap: 4rem;
+    }
+
+    .cartes-aide {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .asfc-grille {
+        grid-template-columns: 1fr 22rem;
+        gap: 4rem;
+    }
+}
