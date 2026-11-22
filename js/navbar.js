@@ -1,6 +1,3 @@
-// navbar.js : menu burger (sur mobile) + sous-menu "Comprendre la maladie"
-// PS: à charger avec defer, comme ça le HTML est déjà lu quand le script se lance
-
 const boutonBurger = document.querySelector(".bouton-burger");
 const menu = document.getElementById("menu-principal");
 const boutonDeroulant = document.querySelector(".menu-deroulant-bouton");
