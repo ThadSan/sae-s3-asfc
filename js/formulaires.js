@@ -1,6 +1,6 @@
-/* Validation des formulaires Contact, Adhérer et Connexion.
-   Principe : chaque champ à contrôler porte data-regle="requis email tel cp ..." ;
-   les messages s'affichent sous le champ (aria-describedby) + un résumé en haut (role="alert"). */
+/* validation des formulaires contact et adhérer
+   en gros : chaque champ a un data-regle="requis email tel cp ..." et le script lit ça
+   les erreurs s'affichent sous le champ + un résumé en haut de la page */
 (function () {
   'use strict';
 
@@ -38,7 +38,7 @@
   };
 
   function groupe(form, champ) {
-    // pour les boutons radio : tous ceux du même name
+    // pour les boutons radio on prend tous ceux qui ont le même name
     if (champ.type === 'radio') return form.querySelectorAll('input[type=radio][name="' + champ.name + '"]');
     return [champ];
   }
@@ -71,7 +71,7 @@
       if (regle) c.setAttribute('aria-invalid', 'true'); else c.removeAttribute('aria-invalid');
     });
     if (zone) zone.textContent = regle ? MESSAGES[regle].charAt(0).toUpperCase() + MESSAGES[regle].slice(1) : '';
-    // le préfixe CSS « Erreur : » est visuel ; le texte contient déjà le nom du champ
+    // le « erreur : » devant le message est ajouté en css
   }
 
   function initFormulaire(form) {
@@ -86,7 +86,7 @@
       return true;
     });
 
-    // validation à la sortie du champ (blur) puis à chaque saisie une fois l'erreur affichée
+    // on vérifie quand on sort du champ, puis à chaque frappe une fois que l'erreur est affichée
     uniques.forEach(function (champ) {
       Array.prototype.forEach.call(groupe(form, champ), brancher);
       function brancher(c) {
@@ -131,7 +131,7 @@
       }
 
       if (resume) resume.hidden = true;
-      // Pas de back-end dans la SAÉ : on simule l'envoi.
+      // y a pas de back-end dans la sae, donc on simule l'envoi
       form.reset();
       if (confirmation) {
         confirmation.hidden = false;
