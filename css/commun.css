@@ -38,6 +38,7 @@
   --rayon: 8px;
   --pad-bloc: var(--espace-m);     /* sert à la marge intérieure des .bloc */
   --fond-bloc: var(--fond-doux);
+  --erreur: #B3261E;
 }
 
 /* ---------- 2. Base ---------- */
