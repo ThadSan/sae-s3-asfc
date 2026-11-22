@@ -53,7 +53,7 @@ function animerHero() {
                 setTimeout(function () { afficher(boutons); }, 450);
                 setTimeout(function () { afficher(raccourcis); }, 700);
             }
-        }, 28);
+        }, 50);
     }
 
     afficher(badge);
