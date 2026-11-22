@@ -4,30 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact – ASFC</title>
+  <meta name="description" content="Contacter l’ASFC : coordonnées de l’association et formulaire pour poser une question ou demander une information.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/commun.css">
   <link rel="stylesheet" href="../css/navbar-footer.css">
   <link rel="stylesheet" href="../css/contact-adherer.css">
   <script src="../js/formulaires.js" defer></script>
 </head>
 <body>
-<!-- ====== À REMPLACER par la navbar du fichier de base (Personne 2) ====== -->
+<!-- navbar provisoire, à remplacer par celle de la branche navbar-footer -->
 <a class="lien-evitement" href="#contenu">Aller au contenu</a>
 <header class="entete">
   <a href="../index.html" class="logo"><img src="../img/logo-asfc.png" alt="ASFC, accueil" width="120" height="63"></a>
   <nav aria-label="Navigation principale">
     <ul>
       <li><a href="../index.html">Accueil</a></li>
-      <li><a href="association.html">L'association</a></li>
+      <li><a href="#">L'association</a></li>
       <li><a href="maladie.html">Comprendre la maladie</a></li>
-      <li><a href="actualites.html">Actualités</a></li>
+      <li><a href="#">Actualités</a></li>
       <li><a href="contact.html" aria-current="page">Contact</a></li>
     </ul>
   </nav>
   <a class="btn btn-contour-clair" href="adherer.html">Adhérer</a>
-  <a class="btn btn-accent" href="don.html">Faire un don</a>
+  <a class="btn btn-accent" href="https://em-sfc.assoconnect.com/collect/description/199209-m-don-a-l-asfc-pour-l-annee-2026" target="_blank" rel="noopener noreferrer">Faire un don<span class="visuellement-cache"> (nouvelle fenêtre)</span></a>
 </header>
-<!-- ====== FIN navbar ====== -->
+<!-- fin navbar provisoire -->
 
+<!-- main : même structure que les autres pages (container de commun.css) -->
 <main id="contenu" class="container page-formulaire">
   <h1>Nous contacter</h1>
   <p class="intro">Une question, une demande d'information ou besoin d'être orienté ? Écrivez-nous : nos bénévoles, souvent eux-mêmes concernés par la maladie, vous répondent dès que possible. Les champs marqués d'un <span class="obligatoire" aria-hidden="true">*</span><span class="visuellement-cache"> (astérisque)</span> sont obligatoires.</p>
@@ -35,6 +41,7 @@
   <div class="mise-en-page">
     <section class="bloc coordonnees" aria-labelledby="titre-coordonnees">
       <h2 id="titre-coordonnees">Nos coordonnées</h2>
+      <!-- dl : liste de termes (type de demande) + définition (le mail) -->
       <dl>
         <dt>Par courrier</dt>
         <dd>ASFC<br>Maison des Associations<br>3 bis rue Guigonis<br>06300 Nice</dd>
@@ -45,15 +52,18 @@
         <dt>Problème technique sur le site</dt>
         <dd><a href="mailto:webmaster@asso-sfc.org">webmaster@asso-sfc.org</a></dd>
         <dt>Accueil téléphonique</dt>
-        <dd>Réservé aux adhérents : horaires dans l'<a href="connexion.html">Espace adhérents</a></dd>
+        <dd>Réservé aux adhérents : horaires dans l'<a href="#">Espace adhérents</a></dd>
       </dl>
-      <!-- À VÉRIFIER avec le site actuel asso-sfc.org : adresses e-mail exactes -->
+      <!-- adresses mail à revérifier avec le site de l'asso (asso-sfc.org) -->
     </section>
 
     <section class="bloc formulaire" aria-labelledby="titre-formulaire">
       <h2 id="titre-formulaire">Écrivez-nous</h2>
+      <!-- message de confirmation, l'envoi est simulé (pas de back-end) -->
       <div class="confirmation" tabindex="-1" role="status" hidden>Merci, votre message a bien été envoyé. Nous vous répondrons dès que possible.</div>
+      <!-- novalidate : c'est formulaires.js qui vérifie les champs et affiche les erreurs -->
       <form novalidate data-validation action="#" method="post">
+      <!-- résumé des erreurs en haut, caché tant qu'il y en a pas -->
       <div class="resume-erreurs" tabindex="-1" role="alert" hidden>
         <h2>Le formulaire contient des erreurs</h2>
         <ul></ul>
@@ -74,6 +84,7 @@
         <p class="erreur" id="email-erreur"></p>
       </div>
       <div class="champ">
+        <!-- chaque label est relié à son champ avec for + id (critère 15 de l'audit) -->
         <label for="sujet">Objet de votre demande <span class="obligatoire" aria-hidden="true">*</span></label>
         <select id="sujet" name="sujet" required data-regle="requis" data-nom="Objet" data-erreur="sujet-erreur" aria-describedby="sujet-erreur">
           <option value="">Choisissez un objet</option>
@@ -104,17 +115,17 @@
   </div>
 </main>
 
-<!-- ====== À REMPLACER par le pied de page du fichier de base (Personne 2) ====== -->
+<!-- footer provisoire, pareil à remplacer -->
 <footer class="pied">
   <p><strong>ASFC</strong> – Association Française du Syndrome de Fatigue Chronique<br>Maison des Associations, 3 bis rue Guigonis, 06300 Nice</p>
   <ul>
-    <li><a href="mentions-legales.html">Mentions légales</a></li>
-    <li><a href="confidentialite.html">Confidentialité</a></li>
-    <li><a href="accessibilite.html">Accessibilité</a></li>
-    <li><a href="plan-du-site.html">Plan du site</a></li>
+    <li><a href="#">Mentions légales</a></li>
+    <li><a href="#">Confidentialité</a></li>
+    <li><a href="#">Accessibilité</a></li>
+    <li><a href="#">Plan du site</a></li>
   </ul>
   <p>© ASFC – Tous droits réservés</p>
 </footer>
-<!-- ====== FIN pied de page ====== -->
+<!-- fin footer provisoire -->
 </body>
 </html>

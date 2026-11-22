@@ -4,43 +4,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Adhérer – ASFC</title>
+  <meta name="description" content="Adhérer à l’ASFC : formulaire d’adhésion pour soutenir l’association et accéder à l’espace adhérents.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/commun.css">
   <link rel="stylesheet" href="../css/navbar-footer.css">
   <link rel="stylesheet" href="../css/contact-adherer.css">
   <script src="../js/formulaires.js" defer></script>
 </head>
 <body>
-<!-- ====== À REMPLACER par la navbar du fichier de base (Personne 2) ====== -->
+<!-- navbar provisoire, à remplacer par celle de la branche navbar-footer -->
 <a class="lien-evitement" href="#contenu">Aller au contenu</a>
 <header class="entete">
   <a href="../index.html" class="logo"><img src="../img/logo-asfc.png" alt="ASFC, accueil" width="120" height="63"></a>
   <nav aria-label="Navigation principale">
     <ul>
       <li><a href="../index.html">Accueil</a></li>
-      <li><a href="association.html">L'association</a></li>
+      <li><a href="#">L'association</a></li>
       <li><a href="maladie.html">Comprendre la maladie</a></li>
-      <li><a href="actualites.html">Actualités</a></li>
+      <li><a href="#">Actualités</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
   <a class="btn btn-contour-clair" href="adherer.html" aria-current="page">Adhérer</a>
-  <a class="btn btn-accent" href="don.html">Faire un don</a>
+  <a class="btn btn-accent" href="https://em-sfc.assoconnect.com/collect/description/199209-m-don-a-l-asfc-pour-l-annee-2026" target="_blank" rel="noopener noreferrer">Faire un don<span class="visuellement-cache"> (nouvelle fenêtre)</span></a>
 </header>
-<!-- ====== FIN navbar ====== -->
+<!-- fin navbar provisoire -->
 
+<!-- main : même structure que les autres pages (container de commun.css) -->
 <main id="contenu" class="container page-formulaire">
   <h1>Adhérer à l'ASFC</h1>
   <p class="intro">En adhérant, vous soutenez l'association et accédez à l'accueil téléphonique, aux réunions régionales, aux ateliers et à la lettre d'informations. Les champs marqués d'un <span class="obligatoire" aria-hidden="true">*</span><span class="visuellement-cache"> (astérisque)</span> sont obligatoires.</p>
 
   <section class="bloc formulaire etroit" aria-labelledby="titre-adhesion">
     <h2 id="titre-adhesion">Votre demande d'adhésion</h2>
-    <div class="confirmation" tabindex="-1" role="status" hidden>Merci, votre demande d'adhésion a bien été enregistrée. Vous recevrez un e-mail de confirmation.</div>
-    <form novalidate data-validation action="#" method="post">
+    <!-- message de confirmation, l'envoi est simulé (pas de back-end) -->
+      <div class="confirmation" tabindex="-1" role="status" hidden>Merci, votre demande d'adhésion a bien été enregistrée. Vous recevrez un e-mail de confirmation.</div>
+    <!-- novalidate : c'est formulaires.js qui vérifie les champs et affiche les erreurs -->
+      <form novalidate data-validation action="#" method="post">
+      <!-- résumé des erreurs en haut, caché tant qu'il y en a pas -->
       <div class="resume-erreurs" tabindex="-1" role="alert" hidden>
         <h2>Le formulaire contient des erreurs</h2>
         <ul></ul>
       </div>
       <div class="champ">
+        <!-- fieldset + legend pour regrouper les boutons radio -->
         <fieldset aria-describedby="civilite-erreur">
           <legend>Civilité <span class="obligatoire" aria-hidden="true">*</span></legend>
           <div class="choix"><input type="radio" id="civilite-0" name="civilite" value="Madame" required data-regle="requis" data-nom="Civilité" data-erreur="civilite-erreur"><label for="civilite-0">Madame</label></div>
@@ -49,6 +59,7 @@
         </fieldset>
         <p class="erreur" id="civilite-erreur"></p>
       </div>
+      <!-- rangee : nom/prénom sur une ligne en pc, empilés sur mobile (flexbox) -->
       <div class="rangee">
       <div class="champ">
         <label for="nom">Nom <span class="obligatoire" aria-hidden="true">*</span></label>
@@ -101,7 +112,7 @@
         </fieldset>
         <p class="erreur" id="formule-erreur"></p>
       </div>
-      <!-- À AJUSTER avec les vraies formules/tarifs du site actuel -->
+      <!-- formules à ajuster avec les vrais tarifs du site de l'asso -->
       <div class="champ">
         <div class="choix">
           <input type="checkbox" id="rgpd" name="rgpd" required data-regle="requis" data-nom="Consentement" data-erreur="rgpd-erreur" aria-describedby="rgpd-erreur">
@@ -112,21 +123,22 @@
       <button type="submit" class="btn btn-accent">Envoyer ma demande</button>
     </form>
 
-    <p class="lien-bascule"><strong>Déjà adhérent ?</strong> <a href="connexion.html">Accédez à votre Espace adhérents</a>.</p>
+    <!-- lien vers l'espace adhérents, à brancher quand la page existera -->
+    <p class="lien-bascule"><strong>Déjà adhérent ?</strong> <a href="#">Accédez à votre Espace adhérents</a>.</p>
   </section>
 </main>
 
-<!-- ====== À REMPLACER par le pied de page du fichier de base (Personne 2) ====== -->
+<!-- footer provisoire, pareil à remplacer -->
 <footer class="pied">
   <p><strong>ASFC</strong> – Association Française du Syndrome de Fatigue Chronique<br>Maison des Associations, 3 bis rue Guigonis, 06300 Nice</p>
   <ul>
-    <li><a href="mentions-legales.html">Mentions légales</a></li>
-    <li><a href="confidentialite.html">Confidentialité</a></li>
-    <li><a href="accessibilite.html">Accessibilité</a></li>
-    <li><a href="plan-du-site.html">Plan du site</a></li>
+    <li><a href="#">Mentions légales</a></li>
+    <li><a href="#">Confidentialité</a></li>
+    <li><a href="#">Accessibilité</a></li>
+    <li><a href="#">Plan du site</a></li>
   </ul>
   <p>© ASFC – Tous droits réservés</p>
 </footer>
-<!-- ====== FIN pied de page ====== -->
+<!-- fin footer provisoire -->
 </body>
 </html>
