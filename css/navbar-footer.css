@@ -59,7 +59,7 @@
 }
 
 .logo img {
-  width: 110px;
+  width: 135px;   /* sur mobile on reste raisonnable à côté du burger */
   height: auto;
 }
 
@@ -248,6 +248,10 @@
 
 /* responsive ordinateur (à partir de 1200px) */
 @media (min-width: 1200px) {
+  .logo img {
+    width: 175px;   /* plus grand sur ordinateur pour être à l'échelle de la navbar */
+  }
+
   .entete-haut {
     display: block;
   }
