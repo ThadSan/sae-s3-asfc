@@ -1,21 +1,19 @@
-/* ==========================================================
-   navbar.js – Menu burger (mobile) + sous-menu "Comprendre la maladie"
-   À charger avec l'attribut defer (le HTML est déjà lu quand il s'exécute).
-   ========================================================== */
+// navbar.js : menu burger (sur mobile) + sous-menu "Comprendre la maladie"
+// PS: à charger avec defer, comme ça le HTML est déjà lu quand le script se lance
 
 const boutonBurger = document.querySelector(".bouton-burger");
 const menu = document.getElementById("menu-principal");
 const boutonDeroulant = document.querySelector(".menu-deroulant-bouton");
 const sousMenu = document.getElementById("sous-menu-maladie");
 
-// Même valeur que le @media (min-width: 1200px) du CSS (partie en-tête)
+// même valeur que le @media (min-width: 1200px) du css de l'en-tête
 const ecranOrdinateur = window.matchMedia("(min-width: 1200px)");
 
-/* ---------- Menu burger ---------- */
+/* menu burger */
 function ouvrirMenu() {
   menu.classList.add("est-ouvert");
   boutonBurger.setAttribute("aria-expanded", "true");
-  // On place le focus sur le premier lien pour les utilisateurs clavier
+  // on met le focus sur le premier lien pour ceux qui naviguent au clavier
   menu.querySelector("a, button").focus();
 }
 
@@ -37,14 +35,14 @@ if (boutonBurger && menu) {
     }
   });
 
-  // Si on agrandit la fenêtre en mode ordinateur, on remet le menu à zéro
+  // si on agrandit la fenêtre en mode ordinateur, on remet le menu à zéro
   ecranOrdinateur.addEventListener("change", function () {
     fermerMenu(false);
     fermerSousMenu();
   });
 }
 
-/* ---------- Sous-menu "Comprendre la maladie" ---------- */
+/* sous-menu "Comprendre la maladie" */
 function fermerSousMenu() {
   if (!sousMenu) return;
   sousMenu.classList.remove("est-ouvert");
@@ -58,7 +56,7 @@ if (boutonDeroulant && sousMenu) {
     boutonDeroulant.setAttribute("aria-expanded", String(!estOuvert));
   });
 
-  // Clic en dehors du sous-menu (sur ordinateur) : on le ferme
+  // si on clique en dehors du sous-menu (sur ordinateur) ça le ferme
   document.addEventListener("click", function (evenement) {
     if (ecranOrdinateur.matches && !boutonDeroulant.parentElement.contains(evenement.target)) {
       fermerSousMenu();
@@ -66,7 +64,7 @@ if (boutonDeroulant && sousMenu) {
   });
 }
 
-/* ---------- Touche Échap : ferme le sous-menu puis le menu ---------- */
+/* touche Échap : ferme d'abord le sous-menu, puis le menu */
 document.addEventListener("keydown", function (evenement) {
   if (evenement.key !== "Escape") return;
 

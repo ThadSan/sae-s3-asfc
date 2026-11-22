@@ -1,11 +1,9 @@
-/* ==========================================================
-   navbar-footer.css – En-tête (navbar + menu burger) et pied de page
-   Utilise les variables de commun.css (à charger AVANT ce fichier).
-   Mobile d'abord : menu burger par défaut, navbar complète à partir de 1200px
-   (en dessous, les liens + boutons ne tiennent pas sur une ligne).
-   ========================================================== */
+/* Le css de la navbar (avec le menu burger) et du footer.
+   Il utilise les variables de commun.css, donc commun.css doit être chargé avant.
+   Mobile-first : menu burger par défaut, navbar complète à partir de 1200px
+   (en dessous les liens + les boutons ne tiennent pas sur une ligne) */
 
-/* ---------- 0. Lien d'évitement (accessibilité clavier) ---------- */
+/* Lien d'évitement : il apparaît seulement au clavier (touche Tab) */
 .lien-evitement {
   position: absolute;
   top: -100px;
@@ -23,9 +21,7 @@
   top: var(--espace-xs);
 }
 
-/* ==========================================================
-   1. EN-TÊTE
-   ========================================================== */
+/* En-tête */
 .entete {
   position: relative;
   z-index: 100;
@@ -34,8 +30,7 @@
   border-bottom: 3px solid var(--orange);
 }
 
-/* ---------- 1a. Barre du haut (Accueil téléphonique / Espace adhérents) ---------- */
-/* Cachée sur mobile : ces liens sont dans le menu burger */
+/* Barre du haut (Accueil téléphonique / Espace adhérents), cachée sur mobile car ces liens sont dans le menu burger */
 .entete-haut {
   display: none;
 }
@@ -59,7 +54,7 @@
   text-decoration: underline;
 }
 
-/* ---------- 1b. Barre principale ---------- */
+/* Barre principale */
 .entete-principal {
   display: flex;
   align-items: center;
@@ -74,7 +69,7 @@
   height: auto;
 }
 
-/* ---------- 1c. Bouton burger (mobile) ---------- */
+/* Bouton burger (sur mobile) */
 .bouton-burger {
   display: inline-flex;
   align-items: center;
@@ -132,7 +127,7 @@
   display: inline;
 }
 
-/* ---------- 1d. Menu (mobile = panneau blanc sous l'en-tête) ---------- */
+/* Menu : sur mobile c'est un panneau blanc sous l'en-tête */
 .menu {
   display: none;
   position: absolute;
@@ -177,7 +172,7 @@
   cursor: pointer;
 }
 
-/* Page courante (mettre aria-current="page" sur le bon lien) */
+/* Pour la page courante (il faut mettre aria-current="page" sur le bon lien) */
 .menu-lien[aria-current="page"] {
   font-weight: 700;
   color: var(--primaire);
@@ -257,7 +252,7 @@
   text-decoration: underline;
 }
 
-/* ---------- 1e. Version ordinateur (≥ 1200px) ---------- */
+/* responsive ordinateur (à partir de 1200px) */
 @media (min-width: 1200px) {
   .entete-haut {
     display: block;
@@ -367,9 +362,7 @@
   }
 }
 
-/* ==========================================================
-   2. PIED DE PAGE
-   ========================================================== */
+/* Footer */
 .pied {
   background: var(--marine-fonce);
   color: var(--sur-sombre-secondaire);
@@ -385,7 +378,7 @@
   text-decoration: underline;
 }
 
-/* Colonnes : 1 sur mobile, 2 sur tablette, 4 sur ordinateur */
+/* Les colonnes : 1 sur mobile, 2 sur tablette, 4 sur ordinateur */
 .pied-colonnes {
   display: grid;
   grid-template-columns: 1fr;
@@ -422,7 +415,7 @@
   padding-block: 4px;
 }
 
-/* Bas du pied de page : copyright + liens légaux */
+/* Bas du footer : copyright + liens légaux */
 .pied-bas {
   display: flex;
   flex-direction: column;
@@ -443,12 +436,14 @@
   font-weight: 600;
 }
 
+/* Tablette */
 @media (min-width: 640px) {
   .pied-colonnes {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
+/* responsive ordinateur */
 @media (min-width: 1024px) {
   .pied-colonnes {
     grid-template-columns: 1.2fr 1fr 1fr 1fr;
@@ -463,7 +458,7 @@
   }
 }
 
-/* Respecte le réglage "réduire les animations" */
+/* Pour respecter le réglage "réduire les animations" de l'utilisateur */
 @media (prefers-reduced-motion: reduce) {
   .chevron {
     transition: none;
