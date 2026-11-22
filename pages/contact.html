@@ -33,7 +33,7 @@
 </header>
 <!-- fin navbar provisoire -->
 
-<!-- main : même structure que les autres pages (container de commun.css) -->
+
 <main id="contenu" class="container page-formulaire">
   <h1>Nous contacter</h1>
   <p class="intro">Une question, une demande d'information ou besoin d'être orienté ? Écrivez-nous : nos bénévoles, souvent eux-mêmes concernés par la maladie, vous répondent dès que possible. Les champs marqués d'un <span class="obligatoire" aria-hidden="true">*</span><span class="visuellement-cache"> (astérisque)</span> sont obligatoires.</p>
@@ -41,7 +41,7 @@
   <div class="mise-en-page">
     <section class="bloc coordonnees" aria-labelledby="titre-coordonnees">
       <h2 id="titre-coordonnees">Nos coordonnées</h2>
-      <!-- dl : liste de termes (type de demande) + définition (le mail) -->
+      <!-- dl : liste de termes  + les définitions -->
       <dl>
         <dt>Par courrier</dt>
         <dd>ASFC<br>Maison des Associations<br>3 bis rue Guigonis<br>06300 Nice</dd>
@@ -54,12 +54,12 @@
         <dt>Accueil téléphonique</dt>
         <dd>Réservé aux adhérents : horaires dans l'<a href="#">Espace adhérents</a></dd>
       </dl>
-      <!-- adresses mail à revérifier avec le site de l'asso (asso-sfc.org) -->
+      <!-- PS : adresses mail à revérifier avec le site de l'asso (asso-sfc.org) -->
     </section>
 
     <section class="bloc formulaire" aria-labelledby="titre-formulaire">
       <h2 id="titre-formulaire">Écrivez-nous</h2>
-      <!-- message de confirmation, l'envoi est simulé (pas de back-end) -->
+      <!-- message de confirmation -->
       <div class="confirmation" tabindex="-1" role="status" hidden>Merci, votre message a bien été envoyé. Nous vous répondrons dès que possible.</div>
       <!-- novalidate : c'est formulaires.js qui vérifie les champs et affiche les erreurs -->
       <form novalidate data-validation action="#" method="post">

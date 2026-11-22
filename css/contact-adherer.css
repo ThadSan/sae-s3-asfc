@@ -18,7 +18,7 @@
 .coordonnees { flex: 1 1 18rem; --fond-bloc: var(--menthe); }
 .formulaire { flex: 2 1 24rem; border: 1px solid var(--bordure); --fond-bloc: var(--fond); }
 .formulaire.etroit { max-width: 48rem; width: 100%; }
-.formulaire.tres-etroit { max-width: 32rem; width: 100%; }
+
 
 .coordonnees dt { font-weight: 700; color: var(--marine); margin-top: var(--espace-s); }
 .coordonnees dd { margin-top: 2px; }
@@ -27,17 +27,17 @@
 .champ { margin-bottom: var(--espace-m); }
 .champ label, .champ legend { display: block; font-weight: 600; color: var(--marine); margin-bottom: 6px; }
 .champ .aide { display: block; font-weight: 400; font-size: 14px; color: var(--texte-secondaire); }
-.obligatoire { color: #B42318; }
+.obligatoire { color: var(--erreur); }
 
 .champ input[type="text"], .champ input[type="email"], .champ input[type="tel"],
-.champ input[type="date"], .champ input[type="password"], .champ select, .champ textarea {
+.champ input[type="date"], .champ select, .champ textarea {
   width: 100%;
   min-height: 44px;
   padding: 10px 12px;
   font: inherit;
   color: var(--texte);
   background: var(--fond);
-  border: 2px solid #5F6F78;          /* bordure assez foncée pour avoir un bon contraste */
+  border: 2px solid var(--bordure-champ);          /* bordure assez foncée pour avoir un bon contraste */
   border-radius: var(--rayon);
 }
 .champ textarea { min-height: 9rem; resize: vertical; }
@@ -52,22 +52,23 @@
 
 /* ---------- erreurs et confirmation ---------- */
 /* le message est écrit en toutes lettres, pas que la couleur (critère 9 de l'audit) */
-.champ [aria-invalid="true"] { border-color: #B42318; }
-.erreur { color: #B42318; font-weight: 600; font-size: 15px; margin-top: 6px; }
+.champ [aria-invalid="true"] { border-color: var(--erreur); }
+.erreur { color: var(--erreur); font-weight: 600; font-size: 15px; margin-top: 6px; }
 .erreur:empty { display: none; }
 .erreur::before { content: "Erreur : "; }
 
-.resume-erreurs { border: 2px solid #B42318; background: #FEF3F2; border-radius: var(--rayon); padding: var(--espace-s) var(--espace-m); margin-bottom: var(--espace-m); }
-.resume-erreurs h2 { font-size: 18px; color: #B42318; margin-bottom: var(--espace-xs); }
+.resume-erreurs { border: 2px solid var(--erreur); background: var(--erreur-fond); border-radius: var(--rayon); padding: var(--espace-s) var(--espace-m); margin-bottom: var(--espace-m); }
+.resume-erreurs h2 { font-size: 18px; color: var(--erreur); margin-bottom: var(--espace-xs); }
 .resume-erreurs ul { padding-left: 20px; }
-.resume-erreurs a { color: #B42318; }
-.confirmation { border: 2px solid #1B6B3A; background: #ECFDF3; color: #14532D; border-radius: var(--rayon); padding: var(--espace-s) var(--espace-m); margin-bottom: var(--espace-m); font-weight: 600; }
+.resume-erreurs a { color: var(--erreur); }
+.confirmation { border: 2px solid var(--succes); background: var(--succes-fond); color: var(--succes-texte); border-radius: var(--rayon); padding: var(--espace-s) var(--espace-m); margin-bottom: var(--espace-m); font-weight: 600; }
 .resume-erreurs[hidden], .confirmation[hidden] { display: none; }
 
 /* ---------- lien "déjà adhérent ?" ---------- */
 .lien-bascule { margin-top: var(--espace-m); padding-top: var(--espace-s); border-top: 1px solid var(--bordure); }
 
+.formulaire .btn { width: 100%; }
 
-@media (max-width: 640px) {
-  .formulaire .btn { width: 100%; }
+@media (min-width: 640px) {
+  .formulaire .btn { width: auto; }
 }

@@ -38,6 +38,13 @@
   --rayon: 8px;
   --pad-bloc: var(--espace-m);     /* sert à la marge intérieure des .bloc */
   --fond-bloc: var(--fond-doux);
+  /* css pour le formulaire */
+  --erreur: #B42318;
+  --erreur-fond: #FEF3F2;
+  --succes: #1B6B3A;
+  --succes-fond: #ECFDF3;
+  --succes-texte: #14532D;
+  --bordure-champ: #5F6F78;
 }
 
 /* ---------- 2. Base ---------- */
