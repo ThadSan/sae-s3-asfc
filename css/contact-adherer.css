@@ -1,6 +1,7 @@
 /* ==========================================================
-   Pages Contact, Adhérer et Connexion (personne 5)
-   S'appuie sur commun.css : variables, .container, .btn, .bloc, .visuellement-cache
+   css des pages contact et adhérer (personne 5)
+   je réutilise commun.css : variables, .container, .btn, .bloc, .visuellement-cache
+   le lien d'évitement est déjà dans navbar-footer.css donc pas ici
    ========================================================== */
 
 .page-formulaire {
@@ -11,7 +12,8 @@
 .page-formulaire h2 { margin-bottom: var(--espace-s); }
 .page-formulaire .intro { max-width: 45rem; margin-bottom: var(--espace-l); color: var(--texte-secondaire); }
 
-/* ---------- Mise en page (flexbox, responsive) ---------- */
+/* ---------- mise en page (flexbox, responsive) ---------- */
+/* flex-wrap : les colonnes passent l'une sous l'autre quand y a pas la place (mobile / zoom 200%) */
 .mise-en-page { display: flex; flex-wrap: wrap; gap: var(--espace-l); align-items: flex-start; }
 .coordonnees { flex: 1 1 18rem; --fond-bloc: var(--menthe); }
 .formulaire { flex: 2 1 24rem; border: 1px solid var(--bordure); --fond-bloc: var(--fond); }
@@ -21,7 +23,7 @@
 .coordonnees dt { font-weight: 700; color: var(--marine); margin-top: var(--espace-s); }
 .coordonnees dd { margin-top: 2px; }
 
-/* ---------- Champs ---------- */
+/* ---------- champs ---------- */
 .champ { margin-bottom: var(--espace-m); }
 .champ label, .champ legend { display: block; font-weight: 600; color: var(--marine); margin-bottom: 6px; }
 .champ .aide { display: block; font-weight: 400; font-size: 14px; color: var(--texte-secondaire); }
@@ -35,7 +37,7 @@
   font: inherit;
   color: var(--texte);
   background: var(--fond);
-  border: 2px solid #5F6F78;          /* contraste >= 3:1 pour les bordures de champ */
+  border: 2px solid #5F6F78;          /* bordure assez foncée pour avoir un bon contraste */
   border-radius: var(--rayon);
 }
 .champ textarea { min-height: 9rem; resize: vertical; }
@@ -48,7 +50,8 @@
 .rangee { display: flex; flex-wrap: wrap; gap: var(--espace-s); }
 .rangee .champ { flex: 1 1 12rem; }
 
-/* ---------- Erreurs et confirmation (texte + couleur, jamais la couleur seule) ---------- */
+/* ---------- erreurs et confirmation ---------- */
+/* le message est écrit en toutes lettres, pas que la couleur (critère 9 de l'audit) */
 .champ [aria-invalid="true"] { border-color: #B42318; }
 .erreur { color: #B42318; font-weight: 600; font-size: 15px; margin-top: 6px; }
 .erreur:empty { display: none; }
@@ -61,11 +64,9 @@
 .confirmation { border: 2px solid #1B6B3A; background: #ECFDF3; color: #14532D; border-radius: var(--rayon); padding: var(--espace-s) var(--espace-m); margin-bottom: var(--espace-m); font-weight: 600; }
 .resume-erreurs[hidden], .confirmation[hidden] { display: none; }
 
-/* ---------- Lien Déjà adhérent ? / Pas encore adhérent ? ---------- */
+/* ---------- lien "déjà adhérent ?" ---------- */
 .lien-bascule { margin-top: var(--espace-m); padding-top: var(--espace-s); border-top: 1px solid var(--bordure); }
 
-.lien-evitement { position: absolute; left: -999px; }
-.lien-evitement:focus { left: var(--espace-s); top: var(--espace-s); background: var(--fond); padding: var(--espace-xs) var(--espace-s); z-index: 10; }
 
 @media (max-width: 640px) {
   .formulaire .btn { width: 100%; }
