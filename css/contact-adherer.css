@@ -58,15 +58,6 @@
 
     /* NOUVEAU CSS POUR LA PAGE ADHERER  en bas c la partie pour adherer */
 
-/* Pour l'en-tête de page */
-.entete-page { background: var(--menthe); padding: var(--espace-l) 0; }
-.entete-page h1 { margin: var(--espace-s) 0; }
-.chapeau { font-size: 1.125rem; color: var(--texte-secondaire); max-width: 60ch; }
-
-.fil-ariane ol { display: flex; flex-wrap: wrap; gap: var(--espace-xs); list-style: none; font-size: 0.875rem; }
-.fil-ariane li + li::before { content: "›" / ""; margin-right: var(--espace-xs); }   /* / "" : décoratif, pas lu */
-.fil-ariane a { color: var(--texte-secondaire); }
-
 /* Sections et grilles */
 .section { padding: var(--espace-l) 0; }
 .section h2 { margin-bottom: var(--espace-s); }

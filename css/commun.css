@@ -41,7 +41,7 @@
   --erreur: #B3261E;
 }
 
-/* ---------- 2. Base ---------- */
+/* Base --*/
 *,
 *::before,
 *::after {
@@ -72,7 +72,7 @@ img {
   display: block;
 }
 
-/* ---------- 3. Titres (mobile-first) ---------- */
+/* Titres (mobile-first) */
 h1 { font-size: var(--taille-h1); line-height: 1.2; }
 h2 { font-size: var(--taille-h2); line-height: 1.25; }
 h3 { font-size: var(--taille-h3); line-height: 1.3; }
@@ -90,7 +90,7 @@ h1, h2, h3 {
   }
 }
 
-/* ---------- 4. Conteneur centré ---------- */
+/* Conteneur centré */
 .container {
   width: 100%;
   max-width: 1248px;
@@ -104,7 +104,7 @@ h1, h2, h3 {
   }
 }
 
-/* ---------- 5. Boutons ---------- */
+/* Boutons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -142,7 +142,7 @@ h1, h2, h3 {
   color: var(--primaire);
 }
 
-/* ---------- 6. Accessibilité : focus visible ---------- */
+/* Accessibilité : focus visible */
 :focus-visible {
   outline: 3px solid var(--marine);
   outline-offset: 2px;
@@ -153,8 +153,8 @@ h1, h2, h3 {
 }
 
 
-/* ---------- 7. Liens (audit critère 5 : soulignés, pas seulement colorés) ---------- */
-/* :where() = spécificité nulle : les classes des pages (ex : .menu-lien de la navbar) passent devant */
+/* Liens (cela corresponds a genre l'audit critère 5 : soulignés, pas seulement colorés) */
+
 :where(a:not(.btn)) {
   color: var(--primaire);
   font-weight: 600;
@@ -166,7 +166,7 @@ h1, h2, h3 {
   color: var(--marine);
 }
 
-/* ---------- 8. Survol des boutons ---------- */
+/* Survol des boutons */
 .btn-primaire:hover     { background: var(--marine); }
 .btn-secondaire:hover   { background: var(--menthe); }
 .btn-accent:hover       { background: #F6A56F; }          /* orange plus clair */
@@ -175,7 +175,7 @@ h1, h2, h3 {
   color: var(--marine);
 }
 
-/* ---------- 9. Classes utilitaires ---------- */
+/*Classes utilitaires */
 
 /* Carte avec fond. Chaque page peut changer le fond (--fond-bloc)
    et la marge intérieure (--pad-bloc) ; sinon, valeurs par défaut */
@@ -198,3 +198,12 @@ h1, h2, h3 {
   clip-path: inset(50%);
   white-space: nowrap;
 }
+
+/* Pour l'en-tête de page */
+.entete-page { background: var(--menthe); padding: var(--espace-l) 0; }
+.entete-page h1 { margin: var(--espace-s) 0; }
+.chapeau { font-size: 1.125rem; color: var(--texte-secondaire); max-width: 60ch; }
+
+.fil-ariane ol { display: flex; flex-wrap: wrap; gap: var(--espace-xs); list-style: none; font-size: 0.875rem; }
+.fil-ariane li + li::before { content: "›" / ""; margin-right: var(--espace-xs); }   /* / "" : décoratif, pas lu */
+.fil-ariane a { color: var(--texte-secondaire); }
