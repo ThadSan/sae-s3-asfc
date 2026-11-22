@@ -1,0 +1,229 @@
+.maladie {
+    --largeur-texte: 75ch; /* évite les lignes trop longues à lire */
+    --pad-bloc: var(--espace-s);
+    --retrait: 20px;
+    --rythme: var(--espace-l);
+}
+
+/* :where() donne une priorité nulle pour que les classes plus bas passent toujours devant */
+.maladie :where(p, ul, ol) {
+    margin-bottom: var(--espace-s);
+    overflow-wrap: break-word;
+}
+
+.maladie :where(ul, ol) {
+    padding-left: var(--retrait);
+}
+
+/* li + li ajoute un espace au-dessus d'un élément seulement s'il suit un autre li */
+.maladie :where(li + li) {
+    margin-top: var(--espace-xs);
+}
+
+.maladie :where(h1, h2, h3) {
+    overflow-wrap: break-word;
+}
+
+.maladie h1 {
+    margin-bottom: var(--espace-s);
+}
+
+.maladie h2 {
+    margin-bottom: var(--espace-m);
+}
+
+/* Couleurs des cartes */
+.bloc-menthe { --fond-bloc: var(--menthe); }
+.bloc-peche  { --fond-bloc: var(--peche); }
+.bloc-bleu   { --fond-bloc: var(--bleu-clair); }
+
+/* > :last-child retire la marge du dernier élément direct pour éviter un double espace en bas */
+.bloc > :last-child {
+    margin-bottom: 0;
+}
+
+/* Sommaire et contenu (1 colonne sur mobile) */
+.page-corps {
+    display: grid;
+    gap: var(--espace-l);
+    padding-block: var(--rythme);
+}
+
+.sommaire {
+    --pad-bloc: var(--espace-m);
+}
+
+.sommaire summary {
+    font-weight: 700;
+    color: var(--marine);
+    cursor: pointer;
+}
+
+.sommaire ul {
+    margin: var(--espace-s) 0 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.contenu-page {
+    max-width: var(--largeur-texte);
+}
+
+.contenu-page section {
+    margin-top: var(--rythme);
+    scroll-margin-top: var(--espace-m); /* évite que le titre soit collé en haut au clic sur le sommaire */
+}
+
+/* :first-child annule la marge haute uniquement sur la toute première section */
+.contenu-page section:first-child {
+    margin-top: 0;
+}
+
+/* Grille auto pour les cartes côte à côte */
+.grille-blocs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--espace-s);
+    margin-bottom: var(--espace-m);
+}
+
+/* > cible uniquement les enfants directs (pas les blocs imbriqués plus loin) */
+.grille-blocs > .bloc {
+    --pad-bloc: var(--espace-m);
+}
+
+.contenu-page section > .bloc {
+    margin-block: var(--espace-m);
+}
+
+/* Accordéons pour les critères de diagnostic */
+.accordeon {
+    border: 1px solid var(--bordure);
+    border-radius: var(--rayon);
+}
+
+.accordeon + .accordeon {
+    margin-top: var(--espace-s);
+}
+
+.accordeon summary {
+    padding: var(--espace-s) var(--espace-m);
+    font-weight: 600;
+    color: var(--marine);
+    cursor: pointer;
+}
+
+.accordeon-corps {
+    padding: 0 var(--espace-m) var(--espace-m);
+}
+
+.accordeon-corps > :last-child {
+    margin-bottom: 0;
+}
+
+.ou {
+    margin-left: var(--retrait);
+    font-weight: 700;
+}
+
+.retrait {
+    padding-left: var(--retrait);
+    border-left: 1px solid var(--bordure);
+}
+
+.sous-liste {
+    margin-top: var(--espace-xs);
+}
+
+.carte-titre {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--marine);
+}
+
+/* Maladies associées + encart partenaire APSSII */
+.comorbidites {
+    display: grid;
+    gap: var(--espace-s);
+    padding-left: 0;
+    list-style: none;
+}
+
+.comorbidites > li {
+    --pad-bloc: var(--espace-m);
+    margin-top: 0;
+}
+
+.partenaire {
+    --pad-bloc: var(--espace-s);
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-s);
+}
+
+.partenaire p {
+    margin-bottom: 0;
+}
+
+.partenaire img {
+    width: 100%;
+    max-width: 212px;
+    border-radius: var(--rayon);
+}
+
+/* Bandeau contact en bas */
+.bandeau-contact {
+    padding-block: var(--rythme);
+    background: var(--marine);
+    color: var(--sur-sombre);
+}
+
+.bandeau-contact h2 {
+    color: var(--sur-sombre);
+}
+
+.liens-plus-loin {
+    padding-left: 0;
+    list-style: none;
+}
+
+.liens-plus-loin > li {
+    margin-top: 0;
+}
+
+.bandeau-contact :focus-visible {
+    outline-color: var(--sur-sombre);
+}
+/* Tablette */
+@media (min-width: 768px) {
+    .maladie {
+        --pad-bloc: var(--espace-l);
+        --retrait: var(--espace-m);
+        --rythme: var(--espace-xl);
+    }
+
+    .partenaire {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .partenaire img {
+        width: 212px;
+        flex-shrink: 0;
+    }
+}
+
+/* responsive ordinateur*/
+@media (min-width: 1024px) {
+    .page-corps {
+        grid-template-columns: 240px minmax(0, 1fr);
+        gap: var(--espace-xl);
+    }
+
+    .sommaire-zone {
+        position: sticky;
+        top: var(--espace-m);
+        align-self: start;
+    }
+}

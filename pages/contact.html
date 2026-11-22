@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact – ASFC</title>
+  <meta name="description" content="Contacter l'ASFC : accueil téléphonique par des bénévoles, adresses mail selon votre demande, formulaire de contact et adresse postale.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/commun.css">
+  <link rel="stylesheet" href="../css/navbar-footer.css">
+  <link rel="stylesheet" href="../css/contact-adherer.css">
+
+  <script src="../js/formulaires.js" defer></script>
+</head>
+<body>
+
+<!-- rayan ajoute la NAVBAR ici stp et met aria-current="page" sur le lien Contact -->
+
+<main id="contenu">
+
+  <!-- En-tête de page -->
+  <section class="entete-page">
+    <div class="container">
+      <nav class="fil-ariane" aria-label="Fil d'Ariane">
+        <ol>
+          <li><a href="../index.html">Accueil</a></li>
+          <li aria-current="page">Contact</li>
+        </ol>
+      </nav>
+      <h1>Nous contacter</h1>
+      <p class="chapeau">Appelez un bénévole, écrivez-nous ou envoyez-nous un message : choisissez le moyen le plus simple pour vous.</p>
+    </div>
+  </section>
+
+  <!-- Accueil téléphonique -->
+  <section class="section" aria-labelledby="titre-benevoles">
+    <div class="container">
+      <h2 id="titre-benevoles">Parler à un bénévole</h2>
+      <p>L'accueil téléphonique répond à vos questions sur l'EM/SFC. Tous les bénévoles répondent aux appels de toutes les régions, sauf les jours fériés. Merci de respecter les jours et horaires indiqués.</p>
+
+      <ul class="grille grille-4">
+        <li class="carte-benevole">
+          <h3>Lundi</h3>
+          <p class="horaire">14 h – 16 h · Bernard</p>
+          <a class="telephone" href="tel:+33327274499">03 27 27 44 99</a>
+        </li>
+        <li class="carte-benevole">
+          <h3>Mardi</h3>
+          <p class="horaire">14 h – 17 h · Robert</p>
+          <a class="telephone" href="tel:+33637011493">06 37 01 14 93</a>
+        </li>
+        <li class="carte-benevole">
+          <h3>Mercredi</h3>
+          <p class="horaire">14 h – 17 h · Isy</p>
+          <a class="telephone" href="tel:+33649552510">06 49 55 25 10</a>
+        </li>
+        <li class="carte-benevole">
+          <h3>Samedi</h3>
+          <p class="horaire">14 h – 16 h · Arnaud</p>
+          <a class="telephone" href="tel:+33640139881">06 40 13 98 81</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Adresses mail -->
+  <section class="section section-peche" aria-labelledby="titre-mails">
+    <div class="container">
+      <h2 id="titre-mails">Écrire à la bonne personne</h2>
+      <ul class="grille grille-3">
+        <li class="carte">
+          <h3>Adhésion et renseignements administratifs</h3>
+          <p>Carte d'adhésion, dates des conférences, bulletins…</p>
+          <a href="mailto:contact@asso-sfc.org">contact@asso-sfc.org</a>
+        </li>
+        <li class="carte">
+          <h3>Presse et médecins</h3>
+          <p>Demandes de journalistes et de professionnels de santé.</p>
+          <a href="mailto:asfc.president@asso-sfc.org">asfc.president@asso-sfc.org</a>
+        </li>
+        <li class="carte">
+          <h3>Problème avec le site</h3>
+          <p>Une page ne marche pas, un lien est cassé…</p>
+          <a href="mailto:webmaster@asso-sfc.org">webmaster@asso-sfc.org</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Formulaire + adresse postale -->
+  <section class="section" aria-labelledby="titre-formulaire">
+    <div class="container deux-colonnes">
+
+      <form id="form-contact" class="formulaire" novalidate>
+        <h2 id="titre-formulaire">Envoyer un message</h2>
+        <p class="aide">Les champs marqués d'une <span aria-hidden="true">*</span><span class="visuellement-cache">astérisque</span> sont obligatoires.</p>
+
+        <div class="champs-ligne">
+          <div class="champ">
+            <label for="nom">Nom et prénom <span aria-hidden="true">*</span></label>
+            <input type="text" id="nom" name="nom" autocomplete="name" required aria-describedby="erreur-nom">
+            <p class="erreur" id="erreur-nom"></p>
+          </div>
+          <div class="champ">
+            <label for="email">Adresse email <span aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="exemple@mail.fr" required aria-describedby="erreur-email">
+            <p class="erreur" id="erreur-email"></p>
+          </div>
+        </div>
+
+        <div class="champ">
+          <label for="sujet">Sujet <span aria-hidden="true">*</span></label>
+          <select id="sujet" name="sujet" required aria-describedby="erreur-sujet">
+            <option value="">Choisissez un sujet</option>
+            <option value="admin">Adhésion et renseignements administratifs</option>
+            <option value="presse">Presse et médecins</option>
+            <option value="technique">Problème avec le site</option>
+            <option value="autre">Autre</option>
+          </select>
+          <p class="erreur" id="erreur-sujet"></p>
+        </div>
+
+        <div class="champ">
+          <label for="message">Message <span aria-hidden="true">*</span></label>
+          <textarea id="message" name="message" rows="6" required aria-describedby="erreur-message"></textarea>
+          <p class="erreur" id="erreur-message"></p>
+        </div>
+
+        <div class="champ champ-case">
+          <input type="checkbox" id="consentement" name="consentement" required aria-describedby="erreur-consentement">
+          <label for="consentement">J'accepte que l'ASFC utilise ces informations pour répondre à mon message. <span aria-hidden="true">*</span></label>
+          <p class="erreur" id="erreur-consentement"></p>
+        </div>
+
+        <button type="submit" class="btn btn-primaire">Envoyer le message</button>
+        <p class="message-retour" role="status"></p>
+      </form>
+
+      <aside class="encadre-courrier" aria-labelledby="titre-courrier">
+        <h2 id="titre-courrier">Par courrier</h2>
+        <address>
+          ASFC<br>
+          Maison des Associations<br>
+          3 bis rue Guigonis<br>
+          06300 Nice
+        </address>
+        <p>Vous êtes adhérent et vous changez d'adresse ? Prévenez-nous pour que nous mettions à jour vos coordonnées.</p>
+      </aside>
+
+    </div>
+  </section>
+
+</main>
+
+<!--rayan ajoute le FOOTER ici stp-->
+
+<!-- Ajoute le scriptde la navbar ici genre : <script src="../js/navbar.js" defer></script> -->
+</body>
+</html>

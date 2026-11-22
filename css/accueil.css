@@ -1,0 +1,498 @@
+
+/* variable locale */
+.accueil {
+    --a-duree: 250ms;   /* c'est la durée commune des animations de la page */
+}
+
+/* ---------- 2. base ---------- */
+.accueil :where(p, ul) {
+    overflow-wrap: break-word;
+}
+
+.accueil :where(ul) {
+    list-style: none;
+}
+
+
+.accueil a:not(.btn) {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition: color 200ms ease, text-decoration-thickness 200ms ease;
+}
+
+.accueil a:not(.btn):hover {
+    text-decoration-thickness: 3px;
+}
+
+/* la structure */
+.bande,
+.hero,
+.soutien {
+    padding-block: var(--espace-l);
+}
+
+.bande-peche { background: var(--peche); }
+.bande-doux  { background: var(--fond-doux); }
+
+.accueil section > .container > :last-child {
+    margin-bottom: 0;
+}
+
+.accueil .container > h2,
+.accueil .entete-section {
+    margin-bottom: var(--espace-m);
+}
+
+/*annonces, hero, entêtes */
+.annonces {
+    padding-block: var(--espace-s);
+    background: var(--bleu-clair);
+}
+
+.annonces p { margin-bottom: var(--espace-xs); }
+.annonces p:last-child { margin-bottom: 0; }
+
+.hero { background: var(--menthe); }
+
+.hero-grille {
+    display: grid;
+    gap: var(--espace-l);
+}
+
+.hero-texte > * + * { margin-top: var(--espace-m); }
+
+.badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: var(--orange);
+    color: var(--marine);
+    border-radius: 999px;      /* pour la  forme de pastille */
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/*  pour le curseur de la frappe */
+.tape { color: inherit; }
+
+.ecriture .tape::after {
+    content: "";
+    display: inline-block;
+    width: 3px;
+    height: 0.85em;
+    margin-right: -3px;
+    background: var(--marine);
+    vertical-align: -0.05em;
+}
+
+.reste { visibility: hidden; }
+
+.chapeau {
+    max-width: 62ch;
+    font-size: 1.125rem;
+    color: var(--texte-secondaire);
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/*liste ouverte, séparée par des lignes */
+.hero-raccourcis {
+    padding-top: var(--espace-m);
+    border-top: 4px solid var(--orange);
+}
+
+.hero-raccourcis h2 {
+    margin-bottom: var(--espace-xs);
+    font-size: 1.35rem;
+}
+
+.hero-raccourcis a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espace-s);
+    padding: var(--espace-s) 0;
+    border-bottom: 2px solid var(--bordure);
+    text-decoration: none;
+    transition: color 200ms ease, border-color 400ms ease;
+}
+
+.hero-raccourcis a span:first-child {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+}
+
+.hero-raccourcis a:hover span:first-child {
+    text-decoration-thickness: 3px;
+}
+
+.fleche {
+    flex-shrink: 0;
+    color: var(--primaire);
+    font-weight: 700;
+    transition: transform var(--a-duree) ease;
+}
+
+.entete-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-xs);
+}
+
+.entete-section h2 { margin: 0; }
+
+/*  en gros pour: aide, actualités, actions, ressources */
+.grille {
+    display: grid;
+    gap: var(--espace-m);
+}
+
+/* pour les lignes séparées, sans cartes */
+.liste-bref li {
+    display: grid;
+    gap: 4px;
+    padding: var(--espace-m) var(--espace-s) var(--espace-m) var(--espace-m);
+    border-bottom: 1px solid var(--bordure);
+    border-left: 4px solid transparent;
+    transition: border-color var(--a-duree) ease, background-color var(--a-duree) ease;
+}
+
+.liste-bref li:first-child { border-top: 1px solid var(--bordure); }
+
+.liste-bref h3 { margin: 0; }
+.liste-bref p  { margin: 0; color: var(--texte-secondaire); }
+
+/* aide : quatre services, le lien du titre couvre toute la carte */
+.carte {
+    position: relative;
+    padding: var(--espace-m);
+    background: var(--fond);
+    border: 1px solid var(--bordure);
+    border-radius: var(--rayon);
+    transition: transform var(--a-duree) ease, border-color var(--a-duree) ease, background-color var(--a-duree) ease;
+}
+
+.carte h3 {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: var(--espace-xs);
+}
+
+.carte p { color: var(--texte-secondaire); }
+.carte > :last-child { margin-bottom: 0; }
+
+.carte h3 a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--rayon);
+}
+
+/* le focus est dessiné autour de toute la carte (le lien la couvre entièrement) */
+.carte:focus-within {
+    outline: 3px solid var(--marine);
+    outline-offset: 3px;
+}
+
+.carte h3 a:focus-visible { outline: none; }
+
+/* la flèche des cartes n'apparaît qu'au survol ou au focus */
+.carte .fleche {
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity var(--a-duree) ease, transform var(--a-duree) ease;
+}
+
+.carte:focus-within .fleche {
+    opacity: 1;
+    transform: none;
+}
+
+.suite {
+    margin-top: var(--espace-s);
+    font-weight: 600;
+    color: var(--primaire);
+}
+
+/* actualités : filet en haut, titres soulignés finement */
+.liste-actus li {
+    padding-top: var(--espace-s);
+    border-top: 4px solid var(--primaire);
+}
+
+.date {
+    margin-bottom: 4px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--texte-secondaire);
+}
+
+.liste-actus h3 { font-size: 1.2rem; }
+
+/* actions : deux colonnes de texte avec un filet orange */
+.action {
+    padding-left: var(--espace-m);
+    border-left: 4px solid var(--orange);
+}
+
+.action h3 { margin-bottom: var(--espace-xs); }
+.action p:last-child { margin-bottom: 0; }
+
+.titre-ressources {
+    margin-top: var(--espace-l);
+    margin-bottom: var(--espace-s);
+}
+
+.ressources {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.ressources a {
+    display: inline-block;
+    padding: 10px 16px;
+    background: var(--fond);
+    border: 2px solid var(--primaire);
+    border-radius: 999px;      /* forme de pastille */
+    text-decoration: none;
+    transition: background-color 200ms ease, color 200ms ease;
+}
+
+.ressources a:hover,
+.ressources a:focus-visible {
+    background: var(--menthe);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+/* à propos, soutien  */
+.asfc-grille {
+    display: grid;
+    gap: var(--espace-l);
+}
+
+.asfc-texte h2 { margin-bottom: var(--espace-m); }
+.asfc-texte p  { max-width: 62ch; }
+
+/* surlignage façon marqueur */
+.souligne {
+    background: linear-gradient(rgba(242, 139, 80, 0.55), rgba(242, 139, 80, 0.55)) no-repeat 0 100% / 100% 0.45em;
+}
+
+.missions {
+    align-self: start;
+    padding: var(--espace-l) var(--espace-m);
+    background: var(--menthe);
+    border-radius: var(--rayon);
+}
+
+.missions h3 { margin-bottom: var(--espace-m); }
+
+.missions ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espace-s) 12px;
+}
+
+.mission {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background: var(--fond);
+    border: 2px solid var(--primaire);
+    border-radius: 999px;
+    font-weight: 600;
+    color: var(--marine);
+}
+
+
+.soutien {
+    background: var(--marine);
+    color: var(--sur-sombre);
+}
+
+.soutien h2 {
+    margin-bottom: 12px;
+    color: var(--sur-sombre);
+}
+
+.soutien p {
+    max-width: 55ch;
+    margin: 0;
+    color: var(--sur-sombre-secondaire);
+}
+
+
+.soutien :focus-visible {
+    outline-color: var(--sur-sombre);
+}
+
+.soutien-grille {
+    display: grid;
+    gap: var(--espace-m);
+}
+
+/* animations  */
+
+/* effets au survol , PS( seulement avec une vraie souris) */
+@media (hover: hover) {
+    .liste-bref li:hover {
+        border-left-color: var(--orange);
+        background-color: var(--fond-doux);
+    }
+    .carte:hover {
+        transform: translateY(-3px);
+        border-color: var(--primaire);
+        background-color: var(--fond-doux);
+    }
+
+    .carte:hover .fleche {
+        opacity: 1;
+        transform: none;
+    }
+
+    .hero-raccourcis a:hover {
+        color: var(--marine);
+        border-bottom-color: var(--primaire);
+    }
+
+    .hero-raccourcis a:hover .fleche {
+        transform: translateX(6px);
+    }
+
+    .soutien .btn {
+        transition: transform 200ms ease;
+    }
+
+    .soutien .btn:hover {
+        transform: translateY(-2px);
+    }
+}
+
+@keyframes flotte {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+}
+
+.animations .souligne {
+    background-size: 0% 0.45em;
+    transition: background-size 900ms ease 500ms;
+}
+
+.animations .souligne.visible {
+    background-size: 100% 0.45em;
+}
+
+/* les missions flottent doucement, 3 allers-retours puis elles se posent */
+.animations .missions.visible .mission {
+    animation: flotte 5s ease-in-out 3;
+}
+
+.animations .missions.visible li:nth-child(even) .mission {
+    animation-duration: 6s;
+    animation-delay: 0.9s;
+}
+
+.animations .missions.visible li:nth-child(3n) .mission {
+    animation-duration: 5.5s;
+    animation-delay: 1.8s;
+}
+
+.animations .missions:hover .mission {
+    animation-play-state: paused;
+}
+
+/* séparateur des actualités qui s'étend */
+.animations .liste-actus li {
+    border-top: 0;
+}
+
+.animations .liste-actus li::before {
+    content: "";
+    display: block;
+    height: 4px;
+    margin-bottom: var(--espace-s);
+    background: var(--primaire);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 700ms ease 150ms;
+}
+
+.animations .liste-actus li.visible::before {
+    transform: scaleX(1);
+}
+
+/* apparition douce : en dernier pour passer devant les transitions des cartes */
+.animations .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.animations .reveal.visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* Responsive tablette et ordinateur */
+@media (min-width: 768px) {
+    .bande,
+    .hero,
+    .soutien {
+        padding-block: var(--espace-xl);
+    }
+
+    .actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .entete-section {
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+    }
+
+    .liste-bref li {
+        grid-template-columns: 1fr 2fr;
+        gap: var(--espace-l);
+        align-items: baseline;
+    }
+
+    .liste-actus {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cartes-aide,
+    .deux-colonnes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .soutien-grille {
+        grid-template-columns: 1fr auto;
+        align-items: center;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-grille {
+        grid-template-columns: 1.4fr 1fr;
+        align-items: center;
+        gap: var(--espace-xl);
+    }
+
+    .cartes-aide {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .asfc-grille {
+        grid-template-columns: 1fr 26rem;
+        gap: var(--espace-xl);
+    }
+}
