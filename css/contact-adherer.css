@@ -1,73 +1,165 @@
-/* ==========================================================
-   css des pages contact et adhérer (personne 5)
-   je réutilise commun.css : variables, .container, .btn, .bloc, .visuellement-cache
-   le lien d'évitement est déjà dans navbar-footer.css donc pas ici
-   ========================================================== */
+/*Le css de la page contact */
+.section-peche { background: var(--peche); }
 
-.page-formulaire {
-  padding-block: var(--espace-l) var(--espace-xl);
-  --fond-bloc: var(--fond-doux);
-}
-.page-formulaire h1 { margin-bottom: var(--espace-xs); }
-.page-formulaire h2 { margin-bottom: var(--espace-s); }
-.page-formulaire .intro { max-width: 45rem; margin-bottom: var(--espace-l); color: var(--texte-secondaire); }
-
-/* ---------- mise en page (flexbox, responsive) ---------- */
-/* flex-wrap : les colonnes passent l'une sous l'autre quand y a pas la place (mobile / zoom 200%) */
-.mise-en-page { display: flex; flex-wrap: wrap; gap: var(--espace-l); align-items: flex-start; }
-.coordonnees { flex: 1 1 18rem; --fond-bloc: var(--menthe); }
-.formulaire { flex: 2 1 24rem; border: 1px solid var(--bordure); --fond-bloc: var(--fond); }
-.formulaire.etroit { max-width: 48rem; width: 100%; }
-.formulaire.tres-etroit { max-width: 32rem; width: 100%; }
-
-.coordonnees dt { font-weight: 700; color: var(--marine); margin-top: var(--espace-s); }
-.coordonnees dd { margin-top: 2px; }
-
-/* ---------- champs ---------- */
-.champ { margin-bottom: var(--espace-m); }
-.champ label, .champ legend { display: block; font-weight: 600; color: var(--marine); margin-bottom: 6px; }
-.champ .aide { display: block; font-weight: 400; font-size: 14px; color: var(--texte-secondaire); }
-.obligatoire { color: #B42318; }
-
-.champ input[type="text"], .champ input[type="email"], .champ input[type="tel"],
-.champ input[type="date"], .champ input[type="password"], .champ select, .champ textarea {
-  width: 100%;
-  min-height: 44px;
-  padding: 10px 12px;
-  font: inherit;
-  color: var(--texte);
+/* la partie pour les cartes bénévoles et les adresses mail */
+.carte, .carte-benevole {
   background: var(--fond);
-  border: 2px solid #5F6F78;          /* bordure assez foncée pour avoir un bon contraste */
+  border: 1px solid var(--bordure);
   border-radius: var(--rayon);
+  padding: var(--espace-m);
 }
-.champ textarea { min-height: 9rem; resize: vertical; }
-.champ fieldset { border: 0; }
+.carte-benevole { background: var(--fond-doux); }
+.carte h3, .carte-benevole h3 { margin-bottom: var(--espace-xs); }
+.carte p { margin-bottom: var(--espace-xs); }
 
-.choix { display: flex; align-items: flex-start; gap: 10px; margin-top: 6px; }
-.choix input { width: 22px; height: 22px; margin-top: 2px; flex: none; }
-.choix label { font-weight: 400; color: var(--texte); margin: 0; }
+.horaire { color: var(--texte-secondaire); margin-bottom: var(--espace-xs); }
+.telephone { font-size: 1.125rem; font-weight: 600; color: var(--primaire); }
+.telephone::before { content: "☎ " / ""; }   /* / "" : icône décorative, pas lue */
 
-.rangee { display: flex; flex-wrap: wrap; gap: var(--espace-s); }
-.rangee .champ { flex: 1 1 12rem; }
+/* Formulaire */
+.formulaire { display: grid; gap: var(--espace-m); }
+.aide { color: var(--texte-secondaire); }
+.champs-ligne { display: grid; gap: var(--espace-m); }
+.champ { display: grid; gap: var(--espace-xs); }
+.champ label { font-weight: 600; }
+.champ input, .champ select, .champ textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 16px;
+  font: inherit;
+  border: 1px solid var(--texte-secondaire);
+  border-radius: var(--rayon);
+  background: var(--fond);
+}
+  .champ textarea { min-height: 140px; resize: vertical; }
 
-/* ---------- erreurs et confirmation ---------- */
-/* le message est écrit en toutes lettres, pas que la couleur (critère 9 de l'audit) */
-.champ [aria-invalid="true"] { border-color: #B42318; }
-.erreur { color: #B42318; font-weight: 600; font-size: 15px; margin-top: 6px; }
-.erreur:empty { display: none; }
-.erreur::before { content: "Erreur : "; }
+  /* Pour la case à cocher : la case à gauche, le texte à droite */
+  .champ-case { grid-template-columns: auto 1fr; align-items: start; gap: 12px; }
+  .champ-case input { width: 22px; height: 22px; min-height: 0; margin-top: 2px; }
+  .champ-case .erreur { grid-column: 1 / -1; }
 
-.resume-erreurs { border: 2px solid #B42318; background: #FEF3F2; border-radius: var(--rayon); padding: var(--espace-s) var(--espace-m); margin-bottom: var(--espace-m); }
-.resume-erreurs h2 { font-size: 18px; color: #B42318; margin-bottom: var(--espace-xs); }
-.resume-erreurs ul { padding-left: 20px; }
-.resume-erreurs a { color: #B42318; }
-.confirmation { border: 2px solid #1B6B3A; background: #ECFDF3; color: #14532D; border-radius: var(--rayon); padding: var(--espace-s) var(--espace-m); margin-bottom: var(--espace-m); font-weight: 600; }
-.resume-erreurs[hidden], .confirmation[hidden] { display: none; }
+  /* Pour les erreurs */
+  .champ [aria-invalid="true"] { border: 2px solid var(--erreur); }
+  .erreur { color: var(--erreur); font-weight: 600; }
+  .erreur:empty { display: none; }
+  .message-retour { font-weight: 600; color: var(--primaire); }
 
-/* ---------- lien "déjà adhérent ?" ---------- */
-.lien-bascule { margin-top: var(--espace-m); padding-top: var(--espace-s); border-top: 1px solid var(--bordure); }
-
-
-@media (max-width: 640px) {
+  /* Btn*/
   .formulaire .btn { width: 100%; }
+
+  /* Encadré*/
+  .encadre-courrier {
+    align-self: start;
+    background: var(--bleu-clair);
+    border-radius: var(--rayon);
+    padding: var(--espace-m);
+  }
+    .encadre-courrier address { font-style: normal; line-height: 1.6; margin-bottom: var(--espace-s); }
+
+    /* NOUVEAU CSS POUR LA PAGE ADHERER  en bas c la partie pour adherer */
+
+/* Pour l'en-tête de page */
+.entete-page { background: var(--menthe); padding: var(--espace-l) 0; }
+.entete-page h1 { margin: var(--espace-s) 0; }
+.chapeau { font-size: 1.125rem; color: var(--texte-secondaire); max-width: 60ch; }
+
+.fil-ariane ol { display: flex; flex-wrap: wrap; gap: var(--espace-xs); list-style: none; font-size: 0.875rem; }
+.fil-ariane li + li::before { content: "›" / ""; margin-right: var(--espace-xs); }   /* / "" : décoratif, pas lu */
+.fil-ariane a { color: var(--texte-secondaire); }
+
+/* Sections et grilles */
+.section { padding: var(--espace-l) 0; }
+.section h2 { margin-bottom: var(--espace-s); }
+.section-douce  { background: var(--fond-doux); }
+.section-menthe { background: var(--menthe); }
+
+.grille { display: grid; gap: var(--espace-s); list-style: none; margin-top: var(--espace-m); }
+.deux-colonnes { display: grid; gap: var(--espace-l); }
+
+/*  Les avantages genre rond vert avec une coche */
+.liste-coches { list-style: none; display: grid; gap: var(--espace-s); }
+.liste-coches li { position: relative; padding-left: 36px; }
+.liste-coches li::before {
+  content:"->";
+  position: absolute; left: 0; top: 0;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--primaire); color: var(--sur-sombre);
+  text-align: center; line-height: 24px; font-weight: 700;
 }
+
+/*Tarifs */
+.carte-tarif {
+  background: var(--fond-doux);
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  padding: var(--espace-m);
+}
+.carte-tarif h3 { margin-bottom: var(--espace-xs); }
+.carte-tarif-solidarite { background: var(--peche); }
+.prix { font-size: 2.25rem; font-weight: 700; color: var(--marine); margin: var(--espace-xs) 0; }
+.prix span { font-size: 1rem; font-weight: 400; color: var(--texte-secondaire); }
+
+/* Pour le btn d'adhésion */
+.bloc-adhesion { display: grid; gap: var(--espace-s); margin-top: var(--espace-m); }
+.bloc-adhesion strong { color: var(--marine); }
+
+/* Les étapes genre le numéro dans un rond orange etc */
+.etapes { counter-reset: etape; gap: var(--espace-m); }
+.etapes li { counter-increment: etape; position: relative; padding-left: 56px; }
+.etapes li::before {
+  content: counter(etape);
+  position: absolute; left: 0; top: 0;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--orange); color: var(--marine);
+  font-weight: 700; display: grid; place-items: center;
+}
+.etapes h3 { margin-bottom: 4px; }
+
+/* Pour les Dons*/
+.encadre-don {
+  display: grid; gap: var(--espace-s);
+  background: var(--peche);
+  border-radius: var(--rayon);
+  padding: var(--espace-m);
+}
+.exemples-don { display: grid; gap: var(--espace-xs); }
+.exemples-don div { display: flex; justify-content: space-between; gap: var(--espace-s); }
+.exemples-don dt { font-weight: 600; }
+
+/* -pour les prsns déjà adhérent */
+.bandeau { display: grid; gap: var(--espace-m); }
+
+/* tablette*/
+@media (min-width: 768px) {
+  .grille-3 { grid-template-columns: repeat(3, 1fr); }
+  .grille-4 { grid-template-columns: repeat(2, 1fr); }
+  .champs-ligne { grid-template-columns: 1fr 1fr; }
+  .formulaire .btn { width: auto; justify-self: start;}
+
+}
+
+/* responsive pour les ordinateurs */
+@media (min-width: 1024px) {
+  .section { padding: var(--espace-xl) 0; }
+  .grille-4 { grid-template-columns: repeat(4, 1fr); }
+  .deux-colonnes { grid-template-columns: 1fr 380px; }
+
+  .deux-colonnes { gap: var(--espace-xl); align-items: start; }
+  .deux-colonnes-inverse { grid-template-columns: 420px 1fr; }
+  .colonnes-don { grid-template-columns: 1fr 460px; align-items: center; }
+
+  .bloc-adhesion { grid-template-columns: auto 1fr; align-items: center; }
+  .encadre-don .btn { justify-self: start; }
+  .bandeau { grid-template-columns: 1fr auto; align-items: center; }
+
+  .etapes { column-gap: var(--espace-xxl); }
+  .etapes li:not(:last-child)::after {
+    content: "⟶" / "";
+    position: absolute;
+    top: 6px;
+    left: calc(100% + 30px);
+    font-size: 1.5rem;
+    color: var(--marine);
+  }
+}
+

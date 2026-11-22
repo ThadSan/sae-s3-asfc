@@ -4,141 +4,144 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Adhérer – ASFC</title>
-  <meta name="description" content="Adhérer à l’ASFC : formulaire d’adhésion pour soutenir l’association et accéder à l’espace adhérents.">
+  <meta name="description" content="Adhérer à l'ASFC : tarifs, avantages de l'adhésion, étapes pour adhérer en ligne et réduction d'impôt sur les dons.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="../css/commun.css">
   <link rel="stylesheet" href="../css/navbar-footer.css">
   <link rel="stylesheet" href="../css/contact-adherer.css">
-  <script src="../js/formulaires.js" defer></script>
 </head>
 <body>
-<!-- navbar provisoire, à remplacer par celle de la branche navbar-footer -->
-<a class="lien-evitement" href="#contenu">Aller au contenu</a>
-<header class="entete">
-  <a href="../index.html" class="logo"><img src="../img/logo-asfc.png" alt="ASFC, accueil" width="120" height="63"></a>
-  <nav aria-label="Navigation principale">
-    <ul>
-      <li><a href="../index.html">Accueil</a></li>
-      <li><a href="#">L'association</a></li>
-      <li><a href="maladie.html">Comprendre la maladie</a></li>
-      <li><a href="#">Actualités</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-  <a class="btn btn-contour-clair" href="adherer.html" aria-current="page">Adhérer</a>
-  <a class="btn btn-accent" href="https://em-sfc.assoconnect.com/collect/description/199209-m-don-a-l-asfc-pour-l-annee-2026" target="_blank" rel="noopener noreferrer">Faire un don<span class="visuellement-cache"> (nouvelle fenêtre)</span></a>
-</header>
-<!-- fin navbar provisoire -->
 
-<!-- main : même structure que les autres pages (container de commun.css) -->
-<main id="contenu" class="container page-formulaire">
-  <h1>Adhérer à l'ASFC</h1>
-  <p class="intro">En adhérant, vous soutenez l'association et accédez à l'accueil téléphonique, aux réunions régionales, aux ateliers et à la lettre d'informations. Les champs marqués d'un <span class="obligatoire" aria-hidden="true">*</span><span class="visuellement-cache"> (astérisque)</span> sont obligatoires.</p>
+<!-- rayan met la NAVBAR ici stp et met aussi aria-current="page" sur le lien L'association -->
 
-  <section class="bloc formulaire etroit" aria-labelledby="titre-adhesion">
-    <h2 id="titre-adhesion">Votre demande d'adhésion</h2>
-    <!-- message de confirmation, l'envoi est simulé (pas de back-end) -->
-      <div class="confirmation" tabindex="-1" role="status" hidden>Merci, votre demande d'adhésion a bien été enregistrée. Vous recevrez un e-mail de confirmation.</div>
-    <!-- novalidate : c'est formulaires.js qui vérifie les champs et affiche les erreurs -->
-      <form novalidate data-validation action="#" method="post">
-      <!-- résumé des erreurs en haut, caché tant qu'il y en a pas -->
-      <div class="resume-erreurs" tabindex="-1" role="alert" hidden>
-        <h2>Le formulaire contient des erreurs</h2>
-        <ul></ul>
-      </div>
-      <div class="champ">
-        <!-- fieldset + legend pour regrouper les boutons radio -->
-        <fieldset aria-describedby="civilite-erreur">
-          <legend>Civilité <span class="obligatoire" aria-hidden="true">*</span></legend>
-          <div class="choix"><input type="radio" id="civilite-0" name="civilite" value="Madame" required data-regle="requis" data-nom="Civilité" data-erreur="civilite-erreur"><label for="civilite-0">Madame</label></div>
-          <div class="choix"><input type="radio" id="civilite-1" name="civilite" value="Monsieur" required data-regle="requis" data-nom="Civilité" data-erreur="civilite-erreur"><label for="civilite-1">Monsieur</label></div>
-          <div class="choix"><input type="radio" id="civilite-2" name="civilite" value="Autre" required data-regle="requis" data-nom="Civilité" data-erreur="civilite-erreur"><label for="civilite-2">Autre / ne souhaite pas répondre</label></div>
-        </fieldset>
-        <p class="erreur" id="civilite-erreur"></p>
-      </div>
-      <!-- rangee : nom/prénom sur une ligne en pc, empilés sur mobile (flexbox) -->
-      <div class="rangee">
-      <div class="champ">
-        <label for="nom">Nom <span class="obligatoire" aria-hidden="true">*</span></label>
-        <input type="text" id="nom" name="nom" autocomplete="family-name" required data-regle="requis nom" data-nom="Nom" data-erreur="nom-erreur" aria-describedby="nom-erreur">
-        <p class="erreur" id="nom-erreur"></p>
-      </div>
-      <div class="champ">
-        <label for="prenom">Prénom <span class="obligatoire" aria-hidden="true">*</span></label>
-        <input type="text" id="prenom" name="prenom" autocomplete="given-name" required data-regle="requis nom" data-nom="Prénom" data-erreur="prenom-erreur" aria-describedby="prenom-erreur">
-        <p class="erreur" id="prenom-erreur"></p>
-      </div>
-      </div>
-      <div class="champ">
-        <label for="naissance">Date de naissance <span class="obligatoire" aria-hidden="true">*</span><span class="aide" id="naissance-aide">Vous devez avoir 18 ans minimum.</span></label>
-        <input type="date" id="naissance" name="naissance" autocomplete="bday" required data-regle="requis majeur" data-nom="Date de naissance" data-erreur="naissance-erreur" aria-describedby="naissance-aide naissance-erreur">
-        <p class="erreur" id="naissance-erreur"></p>
-      </div>
-      <div class="champ">
-        <label for="email">Adresse e-mail <span class="obligatoire" aria-hidden="true">*</span></label>
-        <input type="email" id="email" name="email" autocomplete="email" required data-regle="requis email" data-nom="E-mail" data-erreur="email-erreur" aria-describedby="email-erreur">
-        <p class="erreur" id="email-erreur"></p>
-      </div>
-      <div class="champ">
-        <label for="telephone">Téléphone (facultatif)<span class="aide" id="telephone-aide">Exemple : 06 12 34 56 78</span></label>
-        <input type="tel" id="telephone" name="telephone" autocomplete="tel" data-regle="tel" data-nom="Téléphone" data-erreur="telephone-erreur" aria-describedby="telephone-aide telephone-erreur">
-        <p class="erreur" id="telephone-erreur"></p>
-      </div>
-      <div class="champ">
-        <label for="adresse">Adresse postale <span class="obligatoire" aria-hidden="true">*</span></label>
-        <input type="text" id="adresse" name="adresse" autocomplete="street-address" required data-regle="requis" data-nom="Adresse" data-erreur="adresse-erreur" aria-describedby="adresse-erreur">
-        <p class="erreur" id="adresse-erreur"></p>
-      </div>
-      <div class="rangee">
-      <div class="champ">
-        <label for="cp">Code postal <span class="obligatoire" aria-hidden="true">*</span></label>
-        <input type="text" id="cp" name="cp" autocomplete="postal-code" required data-regle="requis cp" data-nom="Code postal" data-erreur="cp-erreur" aria-describedby="cp-erreur">
-        <p class="erreur" id="cp-erreur"></p>
-      </div>
-      <div class="champ">
-        <label for="ville">Ville <span class="obligatoire" aria-hidden="true">*</span></label>
-        <input type="text" id="ville" name="ville" autocomplete="address-level2" required data-regle="requis" data-nom="Ville" data-erreur="ville-erreur" aria-describedby="ville-erreur">
-        <p class="erreur" id="ville-erreur"></p>
-      </div>
-      </div>
-      <div class="champ">
-        <fieldset aria-describedby="formule-erreur">
-          <legend>Type d'adhésion <span class="obligatoire" aria-hidden="true">*</span></legend>
-          <div class="choix"><input type="radio" id="formule-0" name="formule" value="Individuelle" required data-regle="requis" data-nom="Type d'adhésion" data-erreur="formule-erreur"><label for="formule-0">Adhésion individuelle</label></div>
-          <div class="choix"><input type="radio" id="formule-1" name="formule" value="Soutien" required data-regle="requis" data-nom="Type d'adhésion" data-erreur="formule-erreur"><label for="formule-1">Adhésion de soutien (don supplémentaire)</label></div>
-        </fieldset>
-        <p class="erreur" id="formule-erreur"></p>
-      </div>
-      <!-- formules à ajuster avec les vrais tarifs du site de l'asso -->
-      <div class="champ">
-        <div class="choix">
-          <input type="checkbox" id="rgpd" name="rgpd" required data-regle="requis" data-nom="Consentement" data-erreur="rgpd-erreur" aria-describedby="rgpd-erreur">
-          <label for="rgpd">J'accepte que mes données soient utilisées pour gérer mon adhésion. <span class="obligatoire" aria-hidden="true">*</span></label>
-        </div>
-        <p class="erreur" id="rgpd-erreur"></p>
-      </div>
-      <button type="submit" class="btn btn-accent">Envoyer ma demande</button>
-    </form>
+<main id="contenu">
 
-    <!-- lien vers l'espace adhérents, à brancher quand la page existera -->
-    <p class="lien-bascule"><strong>Déjà adhérent ?</strong> <a href="#">Accédez à votre Espace adhérents</a>.</p>
+  <!-- la partie de l'en-tete de page -->
+  <section class="entete-page">
+    <div class="container">
+      <nav class="fil-ariane" aria-label="Fil d'Ariane">
+        <ol>
+          <li><a href="../index.html">Accueil</a></li>
+          <li>L'association</li>
+          <li aria-current="page">Adhérer</li>
+        </ol>
+      </nav>
+      <h1>Adhérer à l'ASFC</h1>
+      <p class="chapeau">Le site est ouvert à tous. En adhérant, vous soutenez l'association et vous accédez à l'ensemble de ses services.</p>
+    </div>
   </section>
+
+  <!-- Les avantages + les tarifs -->
+  <div class="section">
+    <div class="container deux-colonnes deux-colonnes-inverse">
+
+      <section aria-labelledby="titre-avantages">
+        <h2 id="titre-avantages">Ce que vous apporte l'adhésion</h2>
+        <ul class="liste-coches">
+          <li>Les lettres d'information et newsletters</li>
+          <li>Les conférences de médecins</li>
+          <li>Les articles médicaux</li>
+          <li>Le forum des adhérents</li>
+          <li>L'espace adhérents : documentation administrative, bulletins…</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="titre-tarifs">
+        <h2 id="titre-tarifs">Nos tarifs</h2>
+        <ul class="grille grille-3">
+          <li class="carte-tarif">
+            <h3>Individuelle</h3>
+            <p class="prix">35 € <span>/ an</span></p>
+            <p>Informations envoyées par mail.</p>
+          </li>
+          <li class="carte-tarif">
+            <h3>Couple</h3>
+            <p class="prix">50 € <span>/ an</span></p>
+            <p>Pour deux personnes, informations par mail.</p>
+          </li>
+          <li class="carte-tarif carte-tarif-solidarite">
+            <h3>Solidarité</h3>
+            <p class="prix">10 € <span>/ an</span></p>
+            <p>Chômage, invalidité, RSA, étudiants. Actualités par mail.</p>
+          </li>
+        </ul>
+
+        <div class="bloc-adhesion">
+          <a class="btn btn-primaire"
+             href="https://em-sfc.assoconnect.com/collect/description/199080-s-adhesion-a-l-asfc"
+             target="_blank" rel="noopener noreferrer">
+            J'adhère en ligne<span class="visuellement-cache"> (s'ouvre dans un nouvel onglet)</span>
+          </a>
+          <p><strong>Important :</strong> le formulaire et le paiement se font sur AssoConnect, le site de gestion de l'association (s'ouvre dans un nouvel onglet).</p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Étapes -->
+  <section class="section section-douce" aria-labelledby="titre-etapes">
+    <div class="container">
+      <h2 id="titre-etapes">Comment ça marche ?</h2>
+      <ol class="grille grille-3 etapes">
+        <li>
+          <h3>Choisissez votre formule</h3>
+          <p>Individuelle, couple ou solidarité.</p>
+        </li>
+        <li>
+          <h3>Remplissez le formulaire en ligne</h3>
+          <p>Sur AssoConnect. Vous pouvez y ajouter un don si vous le souhaitez.</p>
+        </li>
+        <li>
+          <h3>Profitez des services</h3>
+          <p>Votre adhésion est valable 12 mois à partir du paiement. Un rappel vous est envoyé par mail avant la fin.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Don -->
+  <section class="section" aria-labelledby="titre-don">
+    <div class="container deux-colonnes colonnes-don">
+      <div>
+        <h2 id="titre-don">Soutenir la recherche par un don</h2>
+        <p>Tous les dons versés à l'ASFC sont réservés aux projets de recherche. Vous pouvez donner le montant de votre choix, au moment de votre adhésion ou à tout moment.</p>
+      </div>
+      <div class="encadre-don">
+        <h3>66 % de réduction d'impôt</h3>
+        <p>Dans la limite de 20 % du revenu imposable, selon la loi en vigueur.</p>
+        <dl class="exemples-don">
+          <div><dt>Vous donnez 10 €</dt><dd>il vous en coûte 3,40 €</dd></div>
+          <div><dt>Vous donnez 50 €</dt><dd>il vous en coûte 17 €</dd></div>
+        </dl>
+        <a class="btn btn-accent"
+           href="https://em-sfc.assoconnect.com/collect/description/199209-m-don-a-l-asfc-pour-l-annee-2026"
+           target="_blank" rel="noopener noreferrer">
+          Faire un don<span class="visuellement-cache"> (s'ouvre dans un nouvel onglet)</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Déjà adhérent -->
+  <section class="section section-menthe" aria-labelledby="titre-deja">
+    <div class="container bandeau">
+      <div>
+        <h2 id="titre-deja">Déjà adhérent ?</h2>
+        <p>Vous n'arrivez pas à accéder à l'espace adhérents, ou vous changez d'adresse ? Écrivez-nous à <a href="mailto:contact@asso-sfc.org">contact@asso-sfc.org</a>.</p>
+      </div>
+      <a class="btn btn-secondaire" href="https://www.asso-sfc.org/asfc-adherents-cpt.php">Accéder à l'espace adhérents</a>
+    </div>
+  </section>
+
 </main>
 
-<!-- footer provisoire, pareil à remplacer -->
-<footer class="pied">
-  <p><strong>ASFC</strong> – Association Française du Syndrome de Fatigue Chronique<br>Maison des Associations, 3 bis rue Guigonis, 06300 Nice</p>
-  <ul>
-    <li><a href="#">Mentions légales</a></li>
-    <li><a href="#">Confidentialité</a></li>
-    <li><a href="#">Accessibilité</a></li>
-    <li><a href="#">Plan du site</a></li>
-  </ul>
-  <p>© ASFC – Tous droits réservés</p>
-</footer>
-<!-- fin footer provisoire -->
+<!-- pareil ici rayan pour le FOOTER -->
+
+<!-- <script src="../js/navbar.js" defer></script> -->
 </body>
 </html>
