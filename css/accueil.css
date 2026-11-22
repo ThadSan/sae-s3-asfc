@@ -1,43 +1,7 @@
-/* ==========================================================
-   accueil.css – page d'accueil de l'asfc
-   mobile d'abord : les règles de base valent pour 390 px,
-   les @media (min-width) ajoutent les colonnes ensuite
 
-   organisation :
-   1. variables locales
-   2. base : texte, liens, titres, focus
-   3. structure : bandes pleine largeur + colonne centrée
-   4. annonces, hero, entêtes de section
-   5. en bref, aide, actualités, actions, ressources
-   6. à propos (surlignage, missions), soutien
-   7. boutons de l'accueil
-   8. animations (actives seulement si la classe "animations" est sur <html>)
-   9. tablette / ordinateur
-   ========================================================== */
-
-/* ---------- 1. variables locales ----------
-   on reprend celles de commun.css si elles existent,
-   sinon la valeur de la maquette figma prend le relais */
+/* variable locale */
 .accueil {
-    --a-marine: var(--marine, #1f3347);
-    --a-primaire: var(--primaire, #0f5c6e);
-    --a-orange: var(--orange, #f28b50);
-    --a-menthe: var(--menthe, #e4f5ee);
-    --a-peche: var(--peche, #fff1e8);
-    --a-bleu: var(--bleu-clair, #e3ecf7);
-    --a-doux: var(--fond-doux, #f6f9fa);
-    --a-bordure: var(--bordure, #d5dee3);
-    --a-texte: var(--texte, #1b2a33);
-    --a-texte2: var(--texte-secondaire, #43535d);
-    --a-clair2: #cbd7e3;
-
-    --a-bande: 3rem;
-    --a-marge: 1.5rem;
-    --a-gap: 1.25rem;
-    --a-duree: 250ms;
-    color: var(--a-texte);
-    font-size: 1rem;
-    line-height: 1.6;
+    --a-duree: 250ms;   /* c'est la durée commune des animations de la page */
 }
 
 /* ---------- 2. base ---------- */
@@ -47,105 +11,67 @@
 
 .accueil :where(ul) {
     list-style: none;
-    padding: 0;
 }
 
-.accueil :where(h1, h2, h3) {
-    color: var(--a-marine);
-    font-weight: 700;
-    line-height: 1.2;
-    text-wrap: balance;
-}
 
-.accueil h1 { font-size: clamp(1.9rem, 5vw + 0.5rem, 3.25rem); }
-.accueil h2 { font-size: clamp(1.6rem, 3vw + 0.5rem, 2.25rem); }
-.accueil h3 { font-size: 1.25rem; line-height: 1.3; }
-
-/* liens toujours soulignés (audit critère 9), contraste suffisant (critère 6) */
 .accueil a:not(.btn) {
-    color: var(--a-primaire);
-    font-weight: 600;
-    text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 4px;
     transition: color 200ms ease, text-decoration-thickness 200ms ease;
 }
 
 .accueil a:not(.btn):hover {
-    color: var(--a-marine);
     text-decoration-thickness: 3px;
 }
 
-.accueil a:focus-visible {
-    outline: 3px solid var(--a-marine);
-    outline-offset: 3px;
-    border-radius: 2px;
-}
-
-/* texte réservé aux lecteurs d'écran */
-.accueil .visuellement-cache {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-}
-
-/* ---------- 3. structure ---------- */
+/* la structure */
 .bande,
 .hero,
 .soutien {
-    padding-block: var(--a-bande);
+    padding-block: var(--espace-l);
 }
 
-.interieur {
-    max-width: 1200px;
-    margin-inline: auto;
-    padding-inline: var(--a-marge);
-}
+.bande-peche { background: var(--peche); }
+.bande-doux  { background: var(--fond-doux); }
 
-.bande-peche { background: var(--a-peche); }
-.bande-doux  { background: var(--a-doux); }
-
-.accueil section > .interieur > :last-child {
+.accueil section > .container > :last-child {
     margin-bottom: 0;
 }
 
-.accueil .interieur > h2,
+.accueil .container > h2,
 .accueil .entete-section {
-    margin-bottom: 1.75rem;
+    margin-bottom: var(--espace-m);
 }
 
-/* ---------- 4. annonces, hero, entêtes ---------- */
+/*annonces, hero, entêtes */
 .annonces {
-    padding-block: 1rem;
-    background: var(--a-bleu);
+    padding-block: var(--espace-s);
+    background: var(--bleu-clair);
 }
 
-.annonces p { margin-bottom: 0.5rem; }
+.annonces p { margin-bottom: var(--espace-xs); }
 .annonces p:last-child { margin-bottom: 0; }
 
-.hero { background: var(--a-menthe); }
+.hero { background: var(--menthe); }
 
 .hero-grille {
     display: grid;
-    gap: 2.5rem;
+    gap: var(--espace-l);
 }
 
-.hero-texte > * + * { margin-top: 1.25rem; }
+.hero-texte > * + * { margin-top: var(--espace-m); }
 
 .badge {
     display: inline-block;
     padding: 6px 14px;
-    background: var(--a-orange);
-    color: var(--a-marine);
-    border-radius: 999px;
+    background: var(--orange);
+    color: var(--marine);
+    border-radius: 999px;      /* pour la  forme de pastille */
     font-weight: 600;
     font-size: 0.9rem;
 }
 
-/* curseur de la frappe : pas de clignotement, supprimé à la fin */
+/*  pour le curseur de la frappe */
 .tape { color: inherit; }
 
 .ecriture .tape::after {
@@ -153,8 +79,8 @@
     display: inline-block;
     width: 3px;
     height: 0.85em;
-    margin-right: -3px;      /* ne décale pas le texte */
-    background: var(--a-marine);
+    margin-right: -3px;
+    background: var(--marine);
     vertical-align: -0.05em;
 }
 
@@ -163,23 +89,23 @@
 .chapeau {
     max-width: 62ch;
     font-size: 1.125rem;
-    color: var(--a-texte2);
+    color: var(--texte-secondaire);
 }
 
 .actions {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 12px;
 }
 
-/* par où commencer : liste ouverte, séparée par des lignes */
+/*liste ouverte, séparée par des lignes */
 .hero-raccourcis {
-    padding-top: 1.25rem;
-    border-top: 4px solid var(--a-orange);
+    padding-top: var(--espace-m);
+    border-top: 4px solid var(--orange);
 }
 
 .hero-raccourcis h2 {
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--espace-xs);
     font-size: 1.35rem;
 }
 
@@ -187,9 +113,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
-    padding: 1rem 0;
-    border-bottom: 2px solid var(--a-bordure);
+    gap: var(--espace-s);
+    padding: var(--espace-s) 0;
+    border-bottom: 2px solid var(--bordure);
     text-decoration: none;
     transition: color 200ms ease, border-color 400ms ease;
 }
@@ -206,7 +132,7 @@
 
 .fleche {
     flex-shrink: 0;
-    color: var(--a-primaire);
+    color: var(--primaire);
     font-weight: 700;
     transition: transform var(--a-duree) ease;
 }
@@ -214,39 +140,39 @@
 .entete-section {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--espace-xs);
 }
 
 .entete-section h2 { margin: 0; }
 
-/* ---------- 5. en bref, aide, actualités, actions, ressources ---------- */
+/*  en gros pour: aide, actualités, actions, ressources */
 .grille {
     display: grid;
-    gap: var(--a-gap);
+    gap: var(--espace-m);
 }
 
-/* en bref : lignes séparées, sans cartes */
+/* pour les lignes séparées, sans cartes */
 .liste-bref li {
     display: grid;
-    gap: 0.25rem;
-    padding: 1.25rem 1rem 1.25rem 1.25rem;
-    border-bottom: 1px solid var(--a-bordure);
+    gap: 4px;
+    padding: var(--espace-m) var(--espace-s) var(--espace-m) var(--espace-m);
+    border-bottom: 1px solid var(--bordure);
     border-left: 4px solid transparent;
     transition: border-color var(--a-duree) ease, background-color var(--a-duree) ease;
 }
 
-.liste-bref li:first-child { border-top: 1px solid var(--a-bordure); }
+.liste-bref li:first-child { border-top: 1px solid var(--bordure); }
 
 .liste-bref h3 { margin: 0; }
-.liste-bref p  { margin: 0; color: var(--a-texte2); }
+.liste-bref p  { margin: 0; color: var(--texte-secondaire); }
 
 /* aide : quatre services, le lien du titre couvre toute la carte */
 .carte {
     position: relative;
-    padding: 1.5rem;
-    background: #fff;
-    border: 1px solid var(--a-bordure);
-    border-radius: 16px;
+    padding: var(--espace-m);
+    background: var(--fond);
+    border: 1px solid var(--bordure);
+    border-radius: var(--rayon);
     transition: transform var(--a-duree) ease, border-color var(--a-duree) ease, background-color var(--a-duree) ease;
 }
 
@@ -254,22 +180,23 @@
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    gap: 0.75rem;
-    margin-bottom: 0.5rem;
+    gap: 12px;
+    margin-bottom: var(--espace-xs);
 }
 
-.carte p { color: var(--a-texte2); }
+.carte p { color: var(--texte-secondaire); }
 .carte > :last-child { margin-bottom: 0; }
 
 .carte h3 a::after {
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: 16px;
+    border-radius: var(--rayon);
 }
 
+/* le focus est dessiné autour de toute la carte (le lien la couvre entièrement) */
 .carte:focus-within {
-    outline: 3px solid var(--a-marine);
+    outline: 3px solid var(--marine);
     outline-offset: 3px;
 }
 
@@ -288,172 +215,141 @@
 }
 
 .suite {
-    margin-top: 1rem;
+    margin-top: var(--espace-s);
     font-weight: 600;
-    color: var(--a-primaire);
+    color: var(--primaire);
 }
 
 /* actualités : filet en haut, titres soulignés finement */
 .liste-actus li {
-    padding-top: 1rem;
-    border-top: 4px solid var(--a-primaire);
+    padding-top: var(--espace-s);
+    border-top: 4px solid var(--primaire);
 }
 
 .date {
-    margin-bottom: 0.25rem;
+    margin-bottom: 4px;
     font-size: 0.95rem;
     font-weight: 600;
-    color: var(--a-texte2);
+    color: var(--texte-secondaire);
 }
 
 .liste-actus h3 { font-size: 1.2rem; }
 
 /* actions : deux colonnes de texte avec un filet orange */
 .action {
-    padding-left: 1.25rem;
-    border-left: 4px solid var(--a-orange);
+    padding-left: var(--espace-m);
+    border-left: 4px solid var(--orange);
 }
 
-.action h3 { margin-bottom: 0.5rem; }
+.action h3 { margin-bottom: var(--espace-xs); }
 .action p:last-child { margin-bottom: 0; }
 
 .titre-ressources {
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
+    margin-top: var(--espace-l);
+    margin-bottom: var(--espace-s);
 }
 
 .ressources {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
-    margin: 0;
+    gap: 12px;
 }
 
 .ressources a {
     display: inline-block;
     padding: 10px 16px;
-    background: #fff;
-    border: 2px solid var(--a-primaire);
-    border-radius: 999px;
+    background: var(--fond);
+    border: 2px solid var(--primaire);
+    border-radius: 999px;      /* forme de pastille */
     text-decoration: none;
     transition: background-color 200ms ease, color 200ms ease;
 }
 
 .ressources a:hover,
 .ressources a:focus-visible {
-    background: var(--a-menthe);
+    background: var(--menthe);
     text-decoration: underline;
     text-decoration-thickness: 2px;
 }
 
-/* ---------- 6. à propos, soutien ---------- */
+/* à propos, soutien  */
 .asfc-grille {
     display: grid;
-    gap: 2rem;
+    gap: var(--espace-l);
 }
 
-.asfc-texte h2 { margin-bottom: 1.25rem; }
+.asfc-texte h2 { margin-bottom: var(--espace-m); }
 .asfc-texte p  { max-width: 62ch; }
 
-/* surlignage façon marqueur : plein par défaut, dessiné si les animations sont actives */
+/* surlignage façon marqueur */
 .souligne {
     background: linear-gradient(rgba(242, 139, 80, 0.55), rgba(242, 139, 80, 0.55)) no-repeat 0 100% / 100% 0.45em;
 }
 
 .missions {
     align-self: start;
-    padding: 2rem 1.5rem 2.5rem;
-    background: var(--a-menthe);
-    border-radius: 16px;
+    padding: var(--espace-l) var(--espace-m);
+    background: var(--menthe);
+    border-radius: var(--rayon);
 }
 
-.missions h3 { margin-bottom: 1.25rem; }
+.missions h3 { margin-bottom: var(--espace-m); }
 
 .missions ul {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem 0.75rem;
-    margin: 0;
+    gap: var(--espace-s) 12px;
 }
 
 .mission {
     display: inline-block;
     padding: 0.6rem 1.2rem;
-    background: #fff;
-    border: 2px solid var(--a-primaire);
+    background: var(--fond);
+    border: 2px solid var(--primaire);
     border-radius: 999px;
     font-weight: 600;
-    color: var(--a-marine);
+    color: var(--marine);
 }
 
+
 .soutien {
-    background: var(--a-marine);
-    color: #fff;
+    background: var(--marine);
+    color: var(--sur-sombre);
 }
 
 .soutien h2 {
-    margin-bottom: 0.75rem;
-    color: #fff;
+    margin-bottom: 12px;
+    color: var(--sur-sombre);
 }
 
 .soutien p {
     max-width: 55ch;
     margin: 0;
-    color: var(--a-clair2);
+    color: var(--sur-sombre-secondaire);
+}
+
+
+.soutien :focus-visible {
+    outline-color: var(--sur-sombre);
 }
 
 .soutien-grille {
     display: grid;
-    gap: 1.75rem;
+    gap: var(--espace-m);
 }
 
-/* ---------- 7. boutons de l'accueil ----------
-   les boutons du hero viennent de commun.css (.btn .btn-primaire .btn-secondaire)
-   ici seulement les deux variantes pour fond sombre */
-.accueil .btn-don {
-    background: var(--a-orange);
-    color: var(--a-marine);
-    border: 2px solid var(--a-orange);
-    transition: background-color 200ms ease, border-color 200ms ease, transform 200ms ease;
-}
+/* animations  */
 
-.accueil .btn-contour-clair {
-    background: transparent;
-    color: #fff;
-    border: 2px solid #fff;
-    transition: background-color 200ms ease, color 200ms ease, transform 200ms ease;
-}
-
-.accueil .btn-don:hover {
-    background: #f6a56f;
-    border-color: #f6a56f;
-}
-
-.accueil .btn-contour-clair:hover {
-    background: #fff;
-    color: var(--a-marine);
-}
-
-.accueil :is(.btn-don, .btn-contour-clair):focus-visible {
-    outline: 3px solid #fff;
-    outline-offset: 3px;
-}
-
-/* ---------- 8. animations ----------
-   la classe "animations" est posée sur <html> par un petit script dans le <head>
-   uniquement si le visiteur n'a pas demandé moins d'animations */
-
-/* effets au survol : seulement avec une vraie souris */
+/* effets au survol , PS( seulement avec une vraie souris) */
 @media (hover: hover) {
     .liste-bref li:hover {
-        border-left-color: var(--a-orange);
-        background-color: var(--a-doux);
+        border-left-color: var(--orange);
+        background-color: var(--fond-doux);
     }
-
     .carte:hover {
         transform: translateY(-3px);
-        border-color: var(--a-primaire);
-        background-color: #fcfdfd;
+        border-color: var(--primaire);
+        background-color: var(--fond-doux);
     }
 
     .carte:hover .fleche {
@@ -462,16 +358,19 @@
     }
 
     .hero-raccourcis a:hover {
-        color: var(--a-marine);
-        border-bottom-color: var(--a-primaire);
+        color: var(--marine);
+        border-bottom-color: var(--primaire);
     }
 
     .hero-raccourcis a:hover .fleche {
         transform: translateX(6px);
     }
 
-    .accueil .btn-don:hover,
-    .accueil .btn-contour-clair:hover {
+    .soutien .btn {
+        transition: transform 200ms ease;
+    }
+
+    .soutien .btn:hover {
         transform: translateY(-2px);
     }
 }
@@ -518,8 +417,8 @@
     content: "";
     display: block;
     height: 4px;
-    margin-bottom: 1rem;
-    background: var(--a-primaire);
+    margin-bottom: var(--espace-s);
+    background: var(--primaire);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 700ms ease 150ms;
@@ -541,11 +440,12 @@
     transform: none;
 }
 
-/* ---------- 9. tablette (768 px) et ordinateur (1024 px) ---------- */
+/* Responsive tablette et ordinateur */
 @media (min-width: 768px) {
-    .accueil {
-        --a-bande: 4.5rem;
-        --a-marge: 2.5rem;
+    .bande,
+    .hero,
+    .soutien {
+        padding-block: var(--espace-xl);
     }
 
     .actions {
@@ -561,7 +461,7 @@
 
     .liste-bref li {
         grid-template-columns: 1fr 2fr;
-        gap: 2rem;
+        gap: var(--espace-l);
         align-items: baseline;
     }
 
@@ -581,15 +481,10 @@
 }
 
 @media (min-width: 1024px) {
-    .accueil {
-        --a-bande: 5rem;
-        --a-marge: 3rem;
-    }
-
     .hero-grille {
         grid-template-columns: 1.4fr 1fr;
         align-items: center;
-        gap: 4rem;
+        gap: var(--espace-xl);
     }
 
     .cartes-aide {
@@ -598,6 +493,6 @@
 
     .asfc-grille {
         grid-template-columns: 1fr 26rem;
-        gap: 4rem;
+        gap: var(--espace-xl);
     }
 }
