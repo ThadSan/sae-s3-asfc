@@ -16,7 +16,68 @@
 </head>
 <body>
 
-<!-- rayan met la NAVBAR ici stp et met aussi aria-current="page" sur le lien L'association -->
+<!-- Lien d'évitement : visible seulement au clavier (touche Tab) -->
+  <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+
+<!-- EN-TÊTE  -->
+  <header class="entete">
+
+    <!-- Barre du haut (cachée sur mobile, ses liens sont dans le menu burger) -->
+    <div class="entete-haut">
+      <div class="container">
+        <ul>
+          <li><a href="contact.html">Accueil téléphonique</a></li>
+          <li><a href="https://www.asso-sfc.org/asfc-adherents-cpt.php">Espace adhérents</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container entete-principal">
+      <a class="logo" href="../index.html">
+        <img src="../img/logo-asfc.png" alt="ASFC – retour à l'accueil" width="110" height="58">
+      </a>
+
+      <!-- Bouton burger (visible seulement sur mobile) -->
+      <button class="bouton-burger" type="button" aria-label="Menu"
+              aria-expanded="false" aria-controls="menu-principal">
+        <span class="burger-icone" aria-hidden="true"></span>
+        <span class="burger-texte-fermer">Fermer</span>
+      </button>
+
+      <nav class="menu" id="menu-principal" aria-label="Navigation principale">
+        <ul class="menu-liste">
+          <li><a class="menu-lien" href="../index.html">Accueil</a></li>
+          <li><a class="menu-lien" href="https://www.asso-sfc.org/asfc-objectifs.php" aria-current="true">L'association</a></li>
+          <li>
+            <button class="menu-deroulant-bouton" type="button"
+                    aria-expanded="false" aria-controls="sous-menu-maladie">
+              Comprendre la maladie
+              <span class="chevron" aria-hidden="true"></span>
+            </button>
+            <ul class="sous-menu" id="sous-menu-maladie">
+              <li><a href="maladie.html">Qu'est-ce que l'EM/SFC ?</a></li>
+              <li><a href="maladie.html#diagnostic">Le diagnostic</a></li>
+              <li><a href="maladie.html#malaise">Le malaise post-effort</a></li>
+              <li><a href="maladie.html#traitement">Traitement et pacing</a></li>
+            </ul>
+          </li>
+          <li><a class="menu-lien" href="https://www.asso-sfc.org/asfc-actualites.php">Actualités</a></li>
+          <li><a class="menu-lien" href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="menu-actions">
+          <a class="btn btn-contour-clair" href="adherer.html">Adhérer</a>
+          <a class="btn btn-accent" href="https://em-sfc.assoconnect.com/collect/description/199209-m-don-a-l-asfc-pour-l-annee-2026">Faire un don</a>
+        </div>
+
+        <!-- Liens de la barre du haut, repris en bas du menu mobile -->
+        <ul class="menu-secondaire">
+          <li><a href="https://www.asso-sfc.org/asfc-adherents-cpt.php">Espace adhérents</a></li>
+          <li><a href="contact.html">Accueil téléphonique</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
 <main id="contenu">
 
@@ -140,8 +201,62 @@
 
 </main>
 
-<!-- pareil ici rayan pour le FOOTER -->
+<!-- ===================== PIED DE PAGE ===================== -->
+  <footer class="pied">
+    <div class="container">
+      <div class="pied-colonnes">
 
-<!-- <script src="../js/navbar.js" defer></script> -->
+        <div class="pied-asso">
+          <p class="pied-asso-nom">ASFC</p>
+          <p>Association Française du Syndrome de Fatigue Chronique</p>
+          <address>
+            Maison des Associations<br>
+            3 bis rue Guigonis, 06300 Nice
+          </address>
+        </div>
+
+        <nav aria-labelledby="pied-titre-site">
+          <h2 class="pied-titre" id="pied-titre-site">Le site</h2>
+          <ul class="pied-liste">
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="https://www.asso-sfc.org/asfc-objectifs.php">L'association</a></li>
+            <li><a href="maladie.html">Comprendre la maladie</a></li>
+            <li><a href="https://www.asso-sfc.org/asfc-actualites.php">Actualités</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-labelledby="pied-titre-rejoindre">
+          <h2 class="pied-titre" id="pied-titre-rejoindre">Nous rejoindre</h2>
+          <ul class="pied-liste">
+            <li><a href="adherer.html">Adhérer</a></li>
+            <li><a href="https://em-sfc.assoconnect.com/collect/description/199209-m-don-a-l-asfc-pour-l-annee-2026">Faire un don</a></li>
+            <li><a href="https://www.asso-sfc.org/asfc-adherents-cpt.php">Espace adhérents</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-labelledby="pied-titre-aide">
+          <h2 class="pied-titre" id="pied-titre-aide">Besoin d'aide ?</h2>
+          <ul class="pied-liste">
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html">Accueil téléphonique</a></li>
+            <li><a href="#">Accueil en régions</a></li>
+          </ul>
+        </nav>
+
+      </div>
+
+      <div class="pied-bas">
+        <p>© ASFC – Tous droits réservés</p>
+        <ul class="pied-legal">
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">Confidentialité</a></li>
+          <li><a href="#">Accessibilité</a></li>
+          <li><a href="#">Plan du site</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+<script src="../js/navbar.js" defer></script>
 </body>
 </html>
