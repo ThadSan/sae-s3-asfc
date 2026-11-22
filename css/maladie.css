@@ -1,23 +1,13 @@
-/* Variables locales : seules ces valeurs changent selon la taille d'écran */
+/* Page maladie - reprend les variables et classes (.bloc, .btn) de commun.css */
+
 .maladie {
-    --largeur-texte: 75ch;
+    --largeur-texte: 75ch; /* évite les lignes trop longues à lire */
     --pad-bloc: var(--espace-s);
     --retrait: 20px;
     --rythme: var(--espace-l);
-    padding-block: var(--espace-l) var(--espace-xl);
 }
 
-/* Colonne de lecture centrée dans le container */
-.maladie > * {
-    max-width: var(--largeur-texte);
-    margin-inline: auto;
-}
-
-.maladie section {
-    margin-top: var(--rythme);
-}
-
-/* :where() donne une spécificité nulle : les classes plus bas passent toujours devant */
+/* :where() donne une priorité nulle pour que les classes plus bas passent toujours devant */
 .maladie :where(p, ul, ol) {
     margin-bottom: var(--espace-s);
     overflow-wrap: break-word;
@@ -27,6 +17,7 @@
     padding-left: var(--retrait);
 }
 
+/* li + li ajoute un espace au-dessus d'un élément seulement s'il suit un autre li */
 .maladie :where(li + li) {
     margin-top: var(--espace-xs);
 }
@@ -43,67 +34,106 @@
     margin-bottom: var(--espace-m);
 }
 
-.maladie h3 {
-    margin-block: var(--espace-l) var(--espace-s);
-}
-
-/* Variantes de .bloc (défini dans commun.css) : seul le fond change */
+/* Couleurs des cartes */
 .bloc-menthe { --fond-bloc: var(--menthe); }
 .bloc-peche  { --fond-bloc: var(--peche); }
+.bloc-bleu   { --fond-bloc: var(--bleu-clair); }
 
-/* Pas de marge sous le dernier élément d'un bloc */
+/* > :last-child retire la marge du dernier élément direct pour éviter un double espace en bas */
 .bloc > :last-child {
     margin-bottom: 0;
 }
 
-.maladie section > .bloc {
-    margin-block: var(--espace-l);
+/* Bandeau du haut */
+.bandeau {
+    padding-block: var(--rythme);
+    background: var(--menthe);
 }
 
-.intro {
-    margin-top: var(--espace-l);
-}
-
-.sous-titre {
-    display: inline-block;
-    padding: 4px 12px;
-    background: var(--marine);
-    color: var(--sur-sombre);
-    border-radius: var(--rayon);
-    font-weight: 600;
-}
-
-.chapeau {
-    font-size: 18px;
-    color: var(--marine);
-}
-
-.nav-rubrique-titre {
-    margin-bottom: var(--espace-xs);
-    font-weight: 600;
-    color: var(--texte-secondaire);
-}
-
-/* Liens de la rubrique côte à côte, à la ligne si l'écran est étroit */
-.nav-rubrique ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--espace-xs);
+.bandeau p {
+    max-width: var(--largeur-texte);
     margin-bottom: 0;
+}
+
+/* Sommaire et contenu (1 colonne sur mobile) */
+.page-corps {
+    display: grid;
+    gap: var(--espace-l);
+    padding-block: var(--rythme);
+}
+
+.sommaire {
+    --pad-bloc: var(--espace-m);
+}
+
+.sommaire summary {
+    font-weight: 700;
+    color: var(--marine);
+    cursor: pointer;
+}
+
+.sommaire ul {
+    margin: var(--espace-s) 0 0;
     padding-left: 0;
     list-style: none;
 }
 
-.nav-rubrique li + li {
+.contenu-page {
+    max-width: var(--largeur-texte);
+}
+
+.contenu-page section {
+    margin-top: var(--rythme);
+    scroll-margin-top: var(--espace-m); /* évite que le titre soit collé en haut au clic sur le sommaire */
+}
+
+/* :first-child annule la marge haute uniquement sur la toute première section */
+.contenu-page section:first-child {
     margin-top: 0;
 }
 
-.renvoi {
-    padding-top: var(--espace-s);
-    border-top: 1px solid var(--bordure);
+/* Grille auto pour les cartes côte à côte */
+.grille-blocs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--espace-s);
+    margin-bottom: var(--espace-m);
 }
 
-/* « ou » placé entre deux listes numérotées (1 / ou / 2) */
+/* > cible uniquement les enfants directs (pas les blocs imbriqués plus loin) */
+.grille-blocs > .bloc {
+    --pad-bloc: var(--espace-m);
+}
+
+.contenu-page section > .bloc {
+    margin-block: var(--espace-m);
+}
+
+/* Accordéons pour les critères de diagnostic */
+.accordeon {
+    border: 1px solid var(--bordure);
+    border-radius: var(--rayon);
+}
+
+.accordeon + .accordeon {
+    margin-top: var(--espace-s);
+}
+
+.accordeon summary {
+    padding: var(--espace-s) var(--espace-m);
+    font-weight: 600;
+    color: var(--marine);
+    cursor: pointer;
+}
+
+.accordeon-corps {
+    padding: 0 var(--espace-m) var(--espace-m);
+}
+
+.accordeon-corps > :last-child {
+    margin-bottom: 0;
+}
+
 .ou {
     margin-left: var(--retrait);
     font-weight: 700;
@@ -118,7 +148,13 @@
     margin-top: var(--espace-xs);
 }
 
-/* Comorbidités : cartes identiques (.bloc), padding réduit par rapport aux autres blocs */
+.carte-titre {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--marine);
+}
+
+/* Maladies associées + encart partenaire APSSII */
 .comorbidites {
     display: grid;
     gap: var(--espace-s);
@@ -131,13 +167,6 @@
     margin-top: 0;
 }
 
-.carte-titre {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--marine);
-}
-
-/* Sous-bloc APSSII dans la carte : logo sous le texte sur mobile, à droite sur tablette */
 .partenaire {
     --pad-bloc: var(--espace-s);
     display: flex;
@@ -155,17 +184,23 @@
     border-radius: var(--rayon);
 }
 
-/* Tablette et ordinateur : on change surtout les variables */
+/* Bandeau contact en bas */
+.bandeau-contact {
+    padding-block: var(--rythme);
+    background: var(--marine);
+    color: var(--sur-sombre);
+}
+
+.bandeau-contact h2 {
+    color: var(--sur-sombre);
+}
+
+/* Tablette */
 @media (min-width: 768px) {
     .maladie {
         --pad-bloc: var(--espace-l);
         --retrait: var(--espace-m);
         --rythme: var(--espace-xl);
-        padding-block: var(--espace-xl) var(--espace-xxl);
-    }
-
-    .chapeau {
-        font-size: 20px;
     }
 
     .partenaire {
@@ -177,5 +212,19 @@
     .partenaire img {
         width: 212px;
         flex-shrink: 0;
+    }
+}
+
+/* PC : sommaire fixe à gauche + contenu à droite */
+@media (min-width: 1024px) {
+    .page-corps {
+        grid-template-columns: 240px minmax(0, 1fr);
+        gap: var(--espace-xl);
+    }
+
+    .sommaire-zone {
+        position: sticky;
+        top: var(--espace-m);
+        align-self: start; /* obligatoire pour que sticky marche dans un grid */
     }
 }
