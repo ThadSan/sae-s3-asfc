@@ -1,0 +1,181 @@
+/* Variables locales : seules ces valeurs changent selon la taille d'écran */
+.maladie {
+    --largeur-texte: 75ch;
+    --pad-bloc: var(--espace-s);
+    --retrait: 20px;
+    --rythme: var(--espace-l);
+    padding-block: var(--espace-l) var(--espace-xl);
+}
+
+/* Colonne de lecture centrée dans le container */
+.maladie > * {
+    max-width: var(--largeur-texte);
+    margin-inline: auto;
+}
+
+.maladie section {
+    margin-top: var(--rythme);
+}
+
+/* :where() donne une spécificité nulle : les classes plus bas passent toujours devant */
+.maladie :where(p, ul, ol) {
+    margin-bottom: var(--espace-s);
+    overflow-wrap: break-word;
+}
+
+.maladie :where(ul, ol) {
+    padding-left: var(--retrait);
+}
+
+.maladie :where(li + li) {
+    margin-top: var(--espace-xs);
+}
+
+.maladie :where(h1, h2, h3) {
+    overflow-wrap: break-word;
+}
+
+.maladie h1 {
+    margin-bottom: var(--espace-s);
+}
+
+.maladie h2 {
+    margin-bottom: var(--espace-m);
+}
+
+.maladie h3 {
+    margin-block: var(--espace-l) var(--espace-s);
+}
+
+/* Variantes de .bloc (défini dans commun.css) : seul le fond change */
+.bloc-menthe { --fond-bloc: var(--menthe); }
+.bloc-peche  { --fond-bloc: var(--peche); }
+
+/* Pas de marge sous le dernier élément d'un bloc */
+.bloc > :last-child {
+    margin-bottom: 0;
+}
+
+.maladie section > .bloc {
+    margin-block: var(--espace-l);
+}
+
+.intro {
+    margin-top: var(--espace-l);
+}
+
+.sous-titre {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--marine);
+    color: var(--sur-sombre);
+    border-radius: var(--rayon);
+    font-weight: 600;
+}
+
+.chapeau {
+    font-size: 18px;
+    color: var(--marine);
+}
+
+.nav-rubrique-titre {
+    margin-bottom: var(--espace-xs);
+    font-weight: 600;
+    color: var(--texte-secondaire);
+}
+
+/* Liens de la rubrique côte à côte, à la ligne si l'écran est étroit */
+.nav-rubrique ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espace-xs);
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.nav-rubrique li + li {
+    margin-top: 0;
+}
+
+.renvoi {
+    padding-top: var(--espace-s);
+    border-top: 1px solid var(--bordure);
+}
+
+/* « ou » placé entre deux listes numérotées (1 / ou / 2) */
+.ou {
+    margin-left: var(--retrait);
+    font-weight: 700;
+}
+
+.retrait {
+    padding-left: var(--retrait);
+    border-left: 1px solid var(--bordure);
+}
+
+.sous-liste {
+    margin-top: var(--espace-xs);
+}
+
+/* Comorbidités : cartes identiques (.bloc), padding réduit par rapport aux autres blocs */
+.comorbidites {
+    display: grid;
+    gap: var(--espace-s);
+    padding-left: 0;
+    list-style: none;
+}
+
+.comorbidites > li {
+    --pad-bloc: var(--espace-m);
+    margin-top: 0;
+}
+
+.carte-titre {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--marine);
+}
+
+/* Sous-bloc APSSII dans la carte : logo sous le texte sur mobile, à droite sur tablette */
+.partenaire {
+    --pad-bloc: var(--espace-s);
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-s);
+}
+
+.partenaire p {
+    margin-bottom: 0;
+}
+
+.partenaire img {
+    width: 100%;
+    max-width: 212px;
+    border-radius: var(--rayon);
+}
+
+/* Tablette et ordinateur : on change surtout les variables */
+@media (min-width: 768px) {
+    .maladie {
+        --pad-bloc: var(--espace-l);
+        --retrait: var(--espace-m);
+        --rythme: var(--espace-xl);
+        padding-block: var(--espace-xl) var(--espace-xxl);
+    }
+
+    .chapeau {
+        font-size: 20px;
+    }
+
+    .partenaire {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .partenaire img {
+        width: 212px;
+        flex-shrink: 0;
+    }
+}
