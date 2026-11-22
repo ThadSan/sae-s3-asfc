@@ -3,23 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Comprendre l’EM/SFC – ASFC</title>
+    <title>La maladie – ASFC</title>
     <meta name="description" content="Le syndrome de fatigue chronique, définition, symptômes, traitements, références médicales...">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
+    <!-- commun.css : base et variables | navbar-footer.css : en-tête/pied | maladie.css : styles spécifiques -->
     <link rel="stylesheet" href="../css/commun.css">
     <link rel="stylesheet" href="../css/navbar-footer.css">
     <link rel="stylesheet" href="../css/maladie.css">
 </head>
 <body>
 
-<header></header>
+<header>
+    <!-- Inclure la navbar ici -->
+</header>
 
 <main id="contenu" class="maladie">
 
+    <!-- Bandeau d'intro -->
     <div class="bandeau">
         <div class="container">
             <h1>Comprendre l’EM/SFC</h1>
@@ -27,8 +31,10 @@
         </div>
     </div>
 
+    <!-- Grille principale : sommaire à gauche (colonne fixe sur PC) + contenu à droite -->
     <div class="container page-corps">
 
+        <!-- Sommaire repliable sur mobile via <details> -->
         <aside class="sommaire-zone">
             <details class="sommaire bloc">
                 <summary>Sur cette page</summary>
@@ -47,6 +53,7 @@
             </details>
         </aside>
 
+        <!-- Contenu principal découpé en sections (les id correspondent aux liens du sommaire) -->
         <div class="contenu-page">
 
             <section id="quest-ce-que">
@@ -60,6 +67,7 @@
             <section id="reconnue">
                 <h2>Une maladie reconnue</h2>
                 <p>Il s’agit d’une maladie neurologique. Reconnue depuis 1969, cette maladie est répertoriée par l’<strong>O</strong>rganisation <strong>M</strong>ondiale de la <strong>S</strong>anté (OMS) sous le code G 93.3 (CIM 10).</p>
+                <!-- Cartes côte à côte -->
                 <div class="grille-blocs">
                     <div class="bloc bloc-peche">
                         <p class="carte-titre">OMS</p>
@@ -67,6 +75,7 @@
                     </div>
                     <div class="bloc bloc-peche">
                         <p class="carte-titre">Assurance maladie</p>
+                        <!-- .visuellement-cache : texte masqué à l'écran mais lu par les lecteurs d'écran -->
                         <p>La CPAM a répertorié la pathologie dans le site AMELI dans la rubrique <a href="https://www.ameli.fr/bouches-du-rhone/assure/sante/themes/asthenie-fatigue/definition-symptomes-causes" target="_blank" rel="noopener noreferrer">Asthénies chroniques<span class="visuellement-cache"> (nouvelle fenêtre)</span></a>.</p>
                     </div>
                 </div>
@@ -81,6 +90,7 @@
                     <li>les critères de Fukuda (1994),</li>
                 </ul>
 
+                <!-- Accordéons natifs (<details>) pour éviter d'allonger la page -->
                 <details class="accordeon">
                     <summary>Nouveaux critères diagnostiques du SEID/SISE proposés par l’IOM* en 2015</summary>
                     <div class="accordeon-corps">
@@ -204,6 +214,7 @@
                     <li class="bloc"><p class="carte-titre">Syndrome fibromyalgique</p></li>
                     <li class="bloc">
                         <p class="carte-titre">Syndrome de l’intestin irritable</p>
+                        <!-- Carte partenaire imbriquée avec logo -->
                         <div class="partenaire bloc bloc-menthe">
                             <div>
                                 <p>N’hésitez pas à prendre contact avec l’<em>APSSII, l’association des patients souffrant du syndrome de l’intestin irritable</em> et partenaire de l’ASFC&nbsp;: <a href="https://apssii.org/" target="_blank" rel="noopener noreferrer">Site de l’APSSII<span class="visuellement-cache"> (nouvelle fenêtre)</span></a></p>
@@ -228,6 +239,7 @@
         </div>
     </div>
 
+    <!-- Bandeau d'appel au contact en bas de page -->
     <section class="bandeau-contact">
         <div class="container texte-centre">
             <h2>Besoin d’en parler&nbsp;?</h2>
@@ -237,7 +249,9 @@
 
 </main>
 
-<footer></footer>
+<footer>
+    <!-- Inclure le pied de page ici -->
+</footer>
 
 <script src="../js/maladie.js" defer></script>
 </body>
