@@ -1,19 +1,24 @@
 // accueil.js : animations douces de la page d'accueil
-// tout est coupé si le visiteur a demandé de réduire les animations
-// (la classe "animations" est posée sur <html> par le script du <head>)
+// PS:tout est coupé si le visiteur a demandé de réduire les animations
 
 if (document.documentElement.classList.contains('animations')) {
     animerHero();
     animerAuScroll();
 }
 
-/* ---------- 1. hero : badge, titre écrit, paragraphe, boutons ---------- */
+/* hero : badge, titre écrit, paragraphe, boutons  */
 function animerHero() {
     const titre = document.querySelector('#titre-hero');
     const badge = document.querySelector('.hero .badge');
     const chapeau = document.querySelector('.hero .chapeau');
     const boutons = document.querySelector('.hero-texte .actions');
     const raccourcis = document.querySelector('.hero-raccourcis');
+
+    // pour cacher le badge, le texte, les boutons et les raccourcis (ils apparaissent apres un par un)
+    // PS( c le js qui met reveal : si le js marche pas tout reste visible )
+    [badge, chapeau, boutons, raccourcis].forEach(function (el) {
+        el.classList.add('reveal');
+    });
 
     // on garde le vrai texte pour les lecteurs d'écran
     // et on écrit une copie cachée aux lecteurs d'écran (aria-hidden)
@@ -60,7 +65,7 @@ function animerHero() {
     setTimeout(ecrire, 350);
 }
 
-/* ---------- 2. apparition des sections quand on descend ---------- */
+/* apparition des sections quand on descend */
 function animerAuScroll() {
     const selecteurs = [
         '.bande > .interieur > h2', '.entete-section',
@@ -70,17 +75,17 @@ function animerAuScroll() {
         '.soutien h2', '.soutien p', '.soutien .actions'
     ];
     const cibles = document.querySelectorAll(selecteurs.join(', '));
-    // ces éléments ont leur propre effet (surlignage, missions qui flottent)
+    // ces éléments ont leur propre effet
     const speciaux = document.querySelectorAll('.souligne, .missions');
 
-    // vieux navigateur : on laisse tout visible
+    // si vieux navigateur : on laisse tout visible
     if (!('IntersectionObserver' in window)) {
         speciaux.forEach(function (el) { el.classList.add('visible'); });
         return;
     }
 
     cibles.forEach(function (el) {
-        // petit décalage selon la position dans la liste, 5 rangs maximum
+        // petit décalage selon la position dans la liste 5 rangs max
         const rang = Array.from(el.parentElement.children).indexOf(el);
         el.classList.add('reveal');
         el.style.transitionDelay = Math.min(rang, 5) * 80 + 'ms';
