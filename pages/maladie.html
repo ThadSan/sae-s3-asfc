@@ -10,7 +10,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- commun.css : base et variables | navbar-footer.css : en-tête/pied | maladie.css : styles spécifiques -->
     <link rel="stylesheet" href="../css/commun.css">
     <link rel="stylesheet" href="../css/navbar-footer.css">
     <link rel="stylesheet" href="../css/maladie.css">
@@ -18,18 +17,22 @@
 <body>
 
 <header>
-    <!-- Inclure la navbar ici -->
+    <!-- rayan met la nav bar ici stp-->
 </header>
 
 <main id="contenu" class="maladie">
-
-    <!-- Bandeau d'intro -->
-    <div class="bandeau">
+    <section class="entete-page">
         <div class="container">
+            <nav class="fil-ariane" aria-label="Fil d'Ariane">
+                <ol>
+                    <li><a href="../index.html">Accueil</a></li>
+                    <li aria-current="page">Comprendre la maladie</li>
+                </ol>
+            </nav>
             <h1>Comprendre l’EM/SFC</h1>
-            <p>Maladie neurologique répertoriée par l’OMS, l’EM/SFC peut évoluer de quelques mois à des années.</p>
+            <p class="chapeau">Encéphalomyélite myalgique ou syndrome de fatigue chronique : deux noms pour une même maladie. L’appellation internationale est EM/SFC.</p>
         </div>
-    </div>
+    </section>
 
     <!-- Grille principale : sommaire à gauche (colonne fixe sur PC) + contenu à droite -->
     <div class="container page-corps">
@@ -66,16 +69,15 @@
 
             <section id="reconnue">
                 <h2>Une maladie reconnue</h2>
-                <p>Il s’agit d’une maladie neurologique. Reconnue depuis 1969, cette maladie est répertoriée par l’<strong>O</strong>rganisation <strong>M</strong>ondiale de la <strong>S</strong>anté (OMS) sous le code G 93.3 (CIM 10).</p>
+                <p>Il s’agit d’une maladie neurologique, répertoriée par l’Organisation mondiale de la santé (OMS) depuis 1969.</p>
                 <!-- Cartes côte à côte -->
                 <div class="grille-blocs">
                     <div class="bloc bloc-peche">
-                        <p class="carte-titre">OMS</p>
-                        <p>L’Organisation Mondiale de la Santé (OMS) reconnaît le Syndrome de Fatigue Chronique (G93.3) depuis 1992.</p>
+                        <p class="carte-titre">Organisation mondiale de la santé</p>
+                        <p>L’EM/SFC est répertoriée sous le code G93.3 de la classification internationale des maladies (CIM-10).</p>
                     </div>
                     <div class="bloc bloc-peche">
                         <p class="carte-titre">Assurance maladie</p>
-                        <!-- .visuellement-cache : texte masqué à l'écran mais lu par les lecteurs d'écran -->
                         <p>La CPAM a répertorié la pathologie dans le site AMELI dans la rubrique <a href="https://www.ameli.fr/bouches-du-rhone/assure/sante/themes/asthenie-fatigue/definition-symptomes-causes" target="_blank" rel="noopener noreferrer">Asthénies chroniques<span class="visuellement-cache"> (nouvelle fenêtre)</span></a>.</p>
                     </div>
                 </div>
@@ -205,6 +207,7 @@
                 <h2>Traitement et pacing</h2>
                 <p class="retrait">Seuls les médecins sont compétents pour déterminer le traitement qui convient à chaque malade, reposant sur une prise en charge globale avec participation active du patient</p>
                 <p>L’ASFC propose à ses adhérents des ateliers thématiques, comme le «&nbsp;pacing&nbsp;».</p>
+                <a class="btn btn-secondaire" href="http://www.asso-sfc.org/asfc-actualites-details-478.php">Découvrir le guide du pacing</a>  <!-- ajout du btn pacing :) -->
             </section>
 
             <section id="associees">
@@ -229,10 +232,19 @@
 
             <section id="aller-plus-loin">
                 <h2>Pour aller plus loin</h2>
-                <ul>
-                    <li><a href="#">Références médicales</a></li>
-                    <li><a href="https://www.ameli.fr/bouches-du-rhone/assure/sante/themes/asthenie-fatigue/definition-symptomes-causes" target="_blank" rel="noopener noreferrer">Asthénies chroniques (AMELI)<span class="visuellement-cache"> (nouvelle fenêtre)</span></a></li>
-                    <li><a href="https://apssii.org/" target="_blank" rel="noopener noreferrer">Site de l’APSSII<span class="visuellement-cache"> (nouvelle fenêtre)</span></a></li>
+                <ul class="grille-blocs liens-plus-loin">
+                    <li class="bloc">
+                        <p class="carte-titre"><a href="#">Références médicales <span aria-hidden="true">→</span></a></p>
+                        <p>Le détail des critères et les publications scientifiques.</p>
+                    </li>
+                    <li class="bloc">
+                        <p class="carte-titre"><a href="https://www.asso-sfc.org/asfc-bulletins.php">Documentation <span aria-hidden="true">→</span></a></p>
+                        <p>Livrets et documents à télécharger.</p>
+                    </li>
+                    <li class="bloc">
+                        <p class="carte-titre"><a href="#">Liens utiles <span aria-hidden="true">→</span></a></p>
+                        <p>Sites de santé et associations partenaires.</p>
+                    </li>
                 </ul>
             </section>
 
@@ -243,6 +255,7 @@
     <section class="bandeau-contact">
         <div class="container texte-centre">
             <h2>Besoin d’en parler&nbsp;?</h2>
+            <p>Les bénévoles de l’accueil téléphonique sont là pour vous écouter et répondre à vos questions.</p>
             <a class="btn btn-accent" href="contact.html">Nous contacter</a>
         </div>
     </section>
@@ -250,7 +263,7 @@
 </main>
 
 <footer>
-    <!-- Inclure le pied de page ici -->
+    <!-- rayan met le footer ici stp -->
 </footer>
 
 <script src="../js/maladie.js" defer></script>

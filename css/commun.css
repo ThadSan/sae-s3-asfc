@@ -204,6 +204,6 @@ h1, h2, h3 {
 .entete-page h1 { margin: var(--espace-s) 0; }
 .chapeau { font-size: 1.125rem; color: var(--texte-secondaire); max-width: 60ch; }
 
-.fil-ariane ol { display: flex; flex-wrap: wrap; gap: var(--espace-xs); list-style: none; font-size: 0.875rem; }
+.fil-ariane ol { display: flex; flex-wrap: wrap; gap: var(--espace-xs); list-style: none; font-size: 0.875rem; padding-left:0; }
 .fil-ariane li + li::before { content: "›" / ""; margin-right: var(--espace-xs); }   /* / "" : décoratif, pas lu */
 .fil-ariane a { color: var(--texte-secondaire); }

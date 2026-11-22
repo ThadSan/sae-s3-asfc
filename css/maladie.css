@@ -1,5 +1,3 @@
-/* Page maladie - reprend les variables et classes (.bloc, .btn) de commun.css */
-
 .maladie {
     --largeur-texte: 75ch; /* évite les lignes trop longues à lire */
     --pad-bloc: var(--espace-s);
@@ -41,17 +39,6 @@
 
 /* > :last-child retire la marge du dernier élément direct pour éviter un double espace en bas */
 .bloc > :last-child {
-    margin-bottom: 0;
-}
-
-/* Bandeau du haut */
-.bandeau {
-    padding-block: var(--rythme);
-    background: var(--menthe);
-}
-
-.bandeau p {
-    max-width: var(--largeur-texte);
     margin-bottom: 0;
 }
 
@@ -195,6 +182,18 @@
     color: var(--sur-sombre);
 }
 
+.liens-plus-loin {
+    padding-left: 0;
+    list-style: none;
+}
+
+.liens-plus-loin > li {
+    margin-top: 0;
+}
+
+.bandeau-contact :focus-visible {
+    outline-color: var(--sur-sombre);
+}
 /* Tablette */
 @media (min-width: 768px) {
     .maladie {
@@ -215,7 +214,7 @@
     }
 }
 
-/* PC : sommaire fixe à gauche + contenu à droite */
+/* responsive ordinateur*/
 @media (min-width: 1024px) {
     .page-corps {
         grid-template-columns: 240px minmax(0, 1fr);
@@ -225,6 +224,6 @@
     .sommaire-zone {
         position: sticky;
         top: var(--espace-m);
-        align-self: start; /* obligatoire pour que sticky marche dans un grid */
+        align-self: start;
     }
 }
