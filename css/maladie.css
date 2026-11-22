@@ -32,9 +32,6 @@
 }
 
 .maladie :where(h1, h2, h3) {
-    color: var(--marine);
-    font-weight: 700;
-    text-wrap: balance;
     overflow-wrap: break-word;
 }
 
@@ -48,18 +45,6 @@
 
 .maladie h3 {
     margin-block: var(--espace-l) var(--espace-s);
-}
-
-/* Liens soulignés (pas de couleur seule), sauf les boutons du CSS commun */
-.maladie a:not(.btn) {
-    color: var(--primaire);
-    font-weight: 600;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-}
-
-.maladie a:not(.btn):hover {
-    color: var(--marine);
 }
 
 /* Variantes de .bloc (défini dans commun.css) : seul le fond change */
@@ -93,14 +78,14 @@
     color: var(--marine);
 }
 
-.sous-menu-titre {
+.nav-rubrique-titre {
     margin-bottom: var(--espace-xs);
     font-weight: 600;
     color: var(--texte-secondaire);
 }
 
-/* Liens du sous-menu côte à côte, à la ligne si l'écran est étroit */
-.sous-menu ul {
+/* Liens de la rubrique côte à côte, à la ligne si l'écran est étroit */
+.nav-rubrique ul {
     display: flex;
     flex-wrap: wrap;
     gap: var(--espace-xs);
@@ -109,7 +94,7 @@
     list-style: none;
 }
 
-.sous-menu li + li {
+.nav-rubrique li + li {
     margin-top: 0;
 }
 
