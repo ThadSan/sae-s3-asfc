@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adhérer – ASFC</title>
+  <meta name="description" content="Adhérer à l’ASFC : formulaire d’adhésion pour soutenir l’association et accéder à l’espace adhérents.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/commun.css">
+  <link rel="stylesheet" href="../css/navbar-footer.css">
+  <link rel="stylesheet" href="../css/contact-adherer.css">
+  <script src="../js/formulaires.js" defer></script>
+</head>
+<body>
+<!-- navbar provisoire, à remplacer par celle de la branche navbar-footer -->
+<a class="lien-evitement" href="#contenu">Aller au contenu</a>
+<header class="entete">
+  <a href="../index.html" class="logo"><img src="../img/logo-asfc.png" alt="ASFC, accueil" width="120" height="63"></a>
+  <nav aria-label="Navigation principale">
+    <ul>
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="#">L'association</a></li>
+      <li><a href="maladie.html">Comprendre la maladie</a></li>
+      <li><a href="#">Actualités</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <a class="btn btn-contour-clair" href="adherer.html" aria-current="page">Adhérer</a>
+  <a class="btn btn-accent" href="https://em-sfc.assoconnect.com/collect/description/199209-m-don-a-l-asfc-pour-l-annee-2026" target="_blank" rel="noopener noreferrer">Faire un don<span class="visuellement-cache"> (nouvelle fenêtre)</span></a>
+</header>
+<!-- fin navbar provisoire -->
+
+<!-- main : même structure que les autres pages (container de commun.css) -->
+<main id="contenu" class="container page-formulaire">
+  <h1>Adhérer à l'ASFC</h1>
+  <p class="intro">En adhérant, vous soutenez l'association et accédez à l'accueil téléphonique, aux réunions régionales, aux ateliers et à la lettre d'informations. Les champs marqués d'un <span class="obligatoire" aria-hidden="true">*</span><span class="visuellement-cache"> (astérisque)</span> sont obligatoires.</p>
+
+  <section class="bloc formulaire etroit" aria-labelledby="titre-adhesion">
+    <h2 id="titre-adhesion">Votre demande d'adhésion</h2>
+    <!-- message de confirmation, l'envoi est simulé (pas de back-end) -->
+      <div class="confirmation" tabindex="-1" role="status" hidden>Merci, votre demande d'adhésion a bien été enregistrée. Vous recevrez un e-mail de confirmation.</div>
+    <!-- novalidate : c'est formulaires.js qui vérifie les champs et affiche les erreurs -->
+      <form novalidate data-validation action="#" method="post">
+      <!-- résumé des erreurs en haut, caché tant qu'il y en a pas -->
+      <div class="resume-erreurs" tabindex="-1" role="alert" hidden>
+        <h2>Le formulaire contient des erreurs</h2>
+        <ul></ul>
+      </div>
+      <div class="champ">
+        <!-- fieldset + legend pour regrouper les boutons radio -->
+        <fieldset aria-describedby="civilite-erreur">
+          <legend>Civilité <span class="obligatoire" aria-hidden="true">*</span></legend>
+          <div class="choix"><input type="radio" id="civilite-0" name="civilite" value="Madame" required data-regle="requis" data-nom="Civilité" data-erreur="civilite-erreur"><label for="civilite-0">Madame</label></div>
+          <div class="choix"><input type="radio" id="civilite-1" name="civilite" value="Monsieur" required data-regle="requis" data-nom="Civilité" data-erreur="civilite-erreur"><label for="civilite-1">Monsieur</label></div>
+          <div class="choix"><input type="radio" id="civilite-2" name="civilite" value="Autre" required data-regle="requis" data-nom="Civilité" data-erreur="civilite-erreur"><label for="civilite-2">Autre / ne souhaite pas répondre</label></div>
+        </fieldset>
+        <p class="erreur" id="civilite-erreur"></p>
+      </div>
+      <!-- rangee : nom/prénom sur une ligne en pc, empilés sur mobile (flexbox) -->
+      <div class="rangee">
+      <div class="champ">
+        <label for="nom">Nom <span class="obligatoire" aria-hidden="true">*</span></label>
+        <input type="text" id="nom" name="nom" autocomplete="family-name" required data-regle="requis nom" data-nom="Nom" data-erreur="nom-erreur" aria-describedby="nom-erreur">
+        <p class="erreur" id="nom-erreur"></p>
+      </div>
+      <div class="champ">
+        <label for="prenom">Prénom <span class="obligatoire" aria-hidden="true">*</span></label>
+        <input type="text" id="prenom" name="prenom" autocomplete="given-name" required data-regle="requis nom" data-nom="Prénom" data-erreur="prenom-erreur" aria-describedby="prenom-erreur">
+        <p class="erreur" id="prenom-erreur"></p>
+      </div>
+      </div>
+      <div class="champ">
+        <label for="naissance">Date de naissance <span class="obligatoire" aria-hidden="true">*</span><span class="aide" id="naissance-aide">Vous devez avoir 18 ans minimum.</span></label>
+        <input type="date" id="naissance" name="naissance" autocomplete="bday" required data-regle="requis majeur" data-nom="Date de naissance" data-erreur="naissance-erreur" aria-describedby="naissance-aide naissance-erreur">
+        <p class="erreur" id="naissance-erreur"></p>
+      </div>
+      <div class="champ">
+        <label for="email">Adresse e-mail <span class="obligatoire" aria-hidden="true">*</span></label>
+        <input type="email" id="email" name="email" autocomplete="email" required data-regle="requis email" data-nom="E-mail" data-erreur="email-erreur" aria-describedby="email-erreur">
+        <p class="erreur" id="email-erreur"></p>
+      </div>
+      <div class="champ">
+        <label for="telephone">Téléphone (facultatif)<span class="aide" id="telephone-aide">Exemple : 06 12 34 56 78</span></label>
+        <input type="tel" id="telephone" name="telephone" autocomplete="tel" data-regle="tel" data-nom="Téléphone" data-erreur="telephone-erreur" aria-describedby="telephone-aide telephone-erreur">
+        <p class="erreur" id="telephone-erreur"></p>
+      </div>
+      <div class="champ">
+        <label for="adresse">Adresse postale <span class="obligatoire" aria-hidden="true">*</span></label>
+        <input type="text" id="adresse" name="adresse" autocomplete="street-address" required data-regle="requis" data-nom="Adresse" data-erreur="adresse-erreur" aria-describedby="adresse-erreur">
+        <p class="erreur" id="adresse-erreur"></p>
+      </div>
+      <div class="rangee">
+      <div class="champ">
+        <label for="cp">Code postal <span class="obligatoire" aria-hidden="true">*</span></label>
+        <input type="text" id="cp" name="cp" autocomplete="postal-code" required data-regle="requis cp" data-nom="Code postal" data-erreur="cp-erreur" aria-describedby="cp-erreur">
+        <p class="erreur" id="cp-erreur"></p>
+      </div>
+      <div class="champ">
+        <label for="ville">Ville <span class="obligatoire" aria-hidden="true">*</span></label>
+        <input type="text" id="ville" name="ville" autocomplete="address-level2" required data-regle="requis" data-nom="Ville" data-erreur="ville-erreur" aria-describedby="ville-erreur">
+        <p class="erreur" id="ville-erreur"></p>
+      </div>
+      </div>
+      <div class="champ">
+        <fieldset aria-describedby="formule-erreur">
+          <legend>Type d'adhésion <span class="obligatoire" aria-hidden="true">*</span></legend>
+          <div class="choix"><input type="radio" id="formule-0" name="formule" value="Individuelle" required data-regle="requis" data-nom="Type d'adhésion" data-erreur="formule-erreur"><label for="formule-0">Adhésion individuelle</label></div>
+          <div class="choix"><input type="radio" id="formule-1" name="formule" value="Soutien" required data-regle="requis" data-nom="Type d'adhésion" data-erreur="formule-erreur"><label for="formule-1">Adhésion de soutien (don supplémentaire)</label></div>
+        </fieldset>
+        <p class="erreur" id="formule-erreur"></p>
+      </div>
+      <!-- formules à ajuster avec les vrais tarifs du site de l'asso -->
+      <div class="champ">
+        <div class="choix">
+          <input type="checkbox" id="rgpd" name="rgpd" required data-regle="requis" data-nom="Consentement" data-erreur="rgpd-erreur" aria-describedby="rgpd-erreur">
+          <label for="rgpd">J'accepte que mes données soient utilisées pour gérer mon adhésion. <span class="obligatoire" aria-hidden="true">*</span></label>
+        </div>
+        <p class="erreur" id="rgpd-erreur"></p>
+      </div>
+      <button type="submit" class="btn btn-accent">Envoyer ma demande</button>
+    </form>
+
+    <!-- lien vers l'espace adhérents, à brancher quand la page existera -->
+    <p class="lien-bascule"><strong>Déjà adhérent ?</strong> <a href="#">Accédez à votre Espace adhérents</a>.</p>
+  </section>
+</main>
+
+<!-- footer provisoire, pareil à remplacer -->
+<footer class="pied">
+  <p><strong>ASFC</strong> – Association Française du Syndrome de Fatigue Chronique<br>Maison des Associations, 3 bis rue Guigonis, 06300 Nice</p>
+  <ul>
+    <li><a href="#">Mentions légales</a></li>
+    <li><a href="#">Confidentialité</a></li>
+    <li><a href="#">Accessibilité</a></li>
+    <li><a href="#">Plan du site</a></li>
+  </ul>
+  <p>© ASFC – Tous droits réservés</p>
+</footer>
+<!-- fin footer provisoire -->
+</body>
+</html>
